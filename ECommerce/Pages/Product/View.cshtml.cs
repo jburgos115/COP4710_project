@@ -16,7 +16,10 @@ namespace ECommerce.Pages.Product
         }
         public void OnGet(int pid)
         {
-            Product = _db.Product.Find(pid);
+            if (_db.Product.Find(pid) != null)
+                Product = _db.Product.Find(pid);
+            else
+                Console.WriteLine("is null");
             /*try
             {
                 Product = _db.Product.Find(pid);
