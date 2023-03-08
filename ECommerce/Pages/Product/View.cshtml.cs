@@ -1,12 +1,30 @@
+using ECommerce.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECommerce.Pages.Product
 {
+    [BindProperties]
     public class ViewModel : PageModel
     {
-        public void OnGet()
+        private readonly ApplicationDbContext _db;
+
+        public Model.Product Product { get; set; }
+        public ViewModel(ApplicationDbContext db)
         {
+            _db = db;
+        }
+        public void OnGet(int pid)
+        {
+            Product = _db.Product.Find(pid);
+            /*try
+            {
+                Product = _db.Product.Find(pid);
+            }
+            catch (Microsoft.Data.SqlClient.SqlException)
+            {
+                Response.Redirect("/../Error");
+            }*/
         }
     }
 }
