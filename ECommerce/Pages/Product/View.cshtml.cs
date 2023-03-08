@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ECommerce.Pages
+namespace ECommerce.Pages.Product
 {
-    public class ProductsModel : PageModel
+    public class ViewModel : PageModel
     {
         public void OnGet()
         {
