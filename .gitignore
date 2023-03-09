@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# omit connection string
+ECommerce/appsettings.json
+ecommerce/appsettings.json
+
 # User-specific files
 *.rsuser
 *.suo

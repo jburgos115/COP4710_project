@@ -20,10 +20,13 @@
         <div class="row">
             <a asp-page="\..\Shops" asp-route-shopid=@product.ShopID>Visit Shop</a>
         </div>
+        <hr>
         <div class="row">
-            <p><strong>Price:</strong> $@product.Price</p>
+            <span><strong>Price:</strong> $@product.Price</span>
         </div>
+        <hr>
         <div class="row">
+            <h5>About this product</h5>
             <p>@product.Description</p>
         </div>
     </div>
