@@ -1,6 +1,8 @@
-﻿.btn-categories {
-    color: #f00;
+﻿btn{
+    color: #ff0000;
     background-color: #1b6ec2;
     border-color: #1861ac;
     font: 100;
+    display: block;
+    padding: 25px;
 }
