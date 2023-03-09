@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gavin\\Documents\\ecommerce\\ECommerce\\ECommerce.csproj": {}
+    "C:\\Users\\Jonah\\Desktop\\ecommerce\\ECommerce\\ECommerce.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gavin\\Documents\\ecommerce\\ECommerce\\ECommerce.csproj": {
+    "C:\\Users\\Jonah\\Desktop\\ecommerce\\ECommerce\\ECommerce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gavin\\Documents\\ecommerce\\ECommerce\\ECommerce.csproj",
+        "projectUniqueName": "C:\\Users\\Jonah\\Desktop\\ecommerce\\ECommerce\\ECommerce.csproj",
         "projectName": "ECommerce",
-        "projectPath": "C:\\Users\\Gavin\\Documents\\ecommerce\\ECommerce\\ECommerce.csproj",
-        "packagesPath": "C:\\Users\\Gavin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gavin\\Documents\\ecommerce\\ECommerce\\obj\\",
+        "projectPath": "C:\\Users\\Jonah\\Desktop\\ecommerce\\ECommerce\\ECommerce.csproj",
+        "packagesPath": "C:\\Users\\Jonah\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jonah\\Desktop\\ecommerce\\ECommerce\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Gavin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jonah\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -48,6 +48,16 @@
               "target": "Package",
               "version": "[7.0.3, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.5, )"
@@ -59,8 +69,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -72,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
