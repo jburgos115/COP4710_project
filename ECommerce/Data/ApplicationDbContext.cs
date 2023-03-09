@@ -11,5 +11,5 @@ public class ApplicationDbContext : DbContext
 	}
 
 	//List of Model objects
-	public DbSet<Product> Product { get; set; }
+	public DbSet<Products> Products { get; set; }
 }

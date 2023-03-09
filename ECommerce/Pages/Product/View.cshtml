@@ -2,24 +2,29 @@
 @model ECommerce.Pages.Product.ViewModel
 @{
     ViewData["Title"] = "Product Name Here";
+    var product = Model.Products;
 }
+
+
 
 <div class="row">
     <div class="col">
         <img src="/ProductImages/apple.png" alt="Apple" width="400" height="200">
     </div>
+
+    
     <div class="col">
         <div class="row">
-            <h4>&lt;PRODUCT NAME&gt;</h4>
+            <h4>@product.Name</h4>
         </div>
         <div class="row">
-            <a asp-page="\..\Shops" asp-route-shopid=1>Visit &lt;SHOP&gt;</a>
+            <a asp-page="\..\Shops" asp-route-shopid=@product.ShopID>Visit Shop</a>
         </div>
         <div class="row">
-            <p><strong>Price:</strong> &lt;PRODUCT PRICE&gt;</p>
+            <p><strong>Price:</strong> $@product.Price</p>
         </div>
         <div class="row">
-            <p>&lt;PRODUCT DESCRIPTION&gt;</p>
+            <p>@product.Description</p>
         </div>
     </div>
 </div>

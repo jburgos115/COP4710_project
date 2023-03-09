@@ -9,25 +9,23 @@ namespace ECommerce.Pages.Product
     {
         private readonly ApplicationDbContext _db;
 
-        public Model.Product Product { get; set; }
+        public Model.Products Products { get; set; }
+        //public string ProductName { get; set; }
         public ViewModel(ApplicationDbContext db)
         {
             _db = db;
         }
         public void OnGet(int pid)
         {
-            if (_db.Product.Find(pid) != null)
-                Product = _db.Product.Find(pid);
-            else
-                Console.WriteLine("is null");
-            /*try
+            //Products = _db.Products;
+            try
             {
-                Product = _db.Product.Find(pid);
+                Products = _db.Products.Find(pid);
             }
             catch (Microsoft.Data.SqlClient.SqlException)
             {
                 Response.Redirect("/../Error");
-            }*/
+            }
         }
     }
 }

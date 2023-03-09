@@ -5,7 +5,7 @@ namespace ECommerce.Model
     //declares the attributes of author table
     //these variables are used to register keep records of authors in the database
 
-    public class Product
+    public class Products
     {
         [Key]
         public int ProductID { get; set; }
@@ -17,11 +17,11 @@ namespace ECommerce.Model
         [Required(ErrorMessage = "Please provide a Product Description", AllowEmptyStrings = false)]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Please provide a Product Price", AllowEmptyStrings = false)]
-        public float Price { get; set; }
+        //[Required(ErrorMessage = "Please provide a Product Price", AllowEmptyStrings = false)]
+        public decimal Price { get; set; }
 
         [Required(ErrorMessage = "Please provide a Product Stock Quantity", AllowEmptyStrings = false)]
-        public float Quantity { get; set; }
+        public int Quantity { get; set; }
 
     }
 }
