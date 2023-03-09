@@ -8,9 +8,19 @@ btn[b-2ky7nzhi1s]{
     padding: 25px;
 }
 /* _content/ECommerce/Pages/Product/View.cshtml.rz.scp.css */
-div[b-dwu9w5ujii] {
-    border: 1px solid black
+img[b-dwu9w5ujii] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
 }
+
+.hline[b-dwu9w5ujii] {
+    width: 100%;
+    height: 1px;
+    background: #6e6e6e
+}
+
 /* _content/ECommerce/Pages/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
