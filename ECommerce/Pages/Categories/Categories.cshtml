@@ -1,0 +1,8 @@
+﻿@page
+@model ECommerce.Pages.Categories.CategoriesModel
+@{
+	@foreach (var CatObj in Model.Category)
+	{
+		<a class="btn btn-primary" style="height:100px;width:200px" asp-area="" asp-route-id=@CatObj.CategoryID asp-page="/CategoriesDisplay/CategoriesDisplay">@CatObj.Name</a>
+	}
+}
