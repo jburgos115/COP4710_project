@@ -1,15 +1,18 @@
-﻿using ECommerce.Model;
+using ECommerce.Model;
 using Microsoft.EntityFrameworkCore;
 
-
-namespace ECommerce.Data;
-public class ApplicationDbContext : DbContext
+namespace ECommerce.Data
 {
-	public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+	public class ApplicationDbContext : DbContext
 	{
+		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+		{
+		}
 
+		//List of Model objects
+		public DbSet<Category> Category { get; set; }
+		public DbSet<Products> Products { get; set; }
+
+		public DbSet<Represents> Represents { get; set; }
 	}
-
-	//List of Model objects
-	public DbSet<Products> Products { get; set; }
 }

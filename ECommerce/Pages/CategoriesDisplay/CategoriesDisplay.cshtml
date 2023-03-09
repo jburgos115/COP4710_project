@@ -1,0 +1,38 @@
+﻿@page
+@model ECommerce.Pages.Categories.CategoriesDisplayModel
+@{
+	var category = Model.Category;
+
+	<h2 style="color:Blue;"> @category.Name </h2>
+
+		<table class="table table-bordered table-striped" style="height:100%;width:100%;display:block;overflow:scroll">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Price</th
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var ProdObj in Model.Products)
+				{
+					@foreach (var RepsObj in Model.Represents)
+					{
+						if (RepsObj.ProductID == ProdObj.ProductID && RepsObj.CategoryID == category.CategoryID)
+						{
+							<tr>
+								<td width="50%">@ProdObj.Name</td>
+								<td width="50%">@ProdObj.Description</td>
+								<td width="50%">@ProdObj.Price</td>
+								<td>
+									<div class="btn">
+										<a class="btn btn-primary" asp-area="" asp-page="/Products">View</a>
+									</div>
+								</td>
+							</tr>
+						}
+					}
+				}
+			</tbody>
+		</table>
+	}
