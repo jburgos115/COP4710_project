@@ -10,13 +10,31 @@ img[b-dwu9w5ujii] {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 40%;
+    max-width: 500px;
+}
+
+.image-container[b-dwu9w5ujii]{
+    width: 500px;
+    height: 500px;
+}
+
+.price[b-dwu9w5ujii]{
+    font-size: 26px;
+    font-weight: bold;
 }
 
 .hline[b-dwu9w5ujii] {
     width: 100%;
     height: 1px;
-    background: #6e6e6e
+    background: #6e6e6e;
+}
+
+.purchase-container[b-dwu9w5ujii]{
+    width: 100px;
+}
+
+.btn-cart[b-dwu9w5ujii]{
+    width: 100%;
 }
 
 /* _content/ECommerce/Pages/Shared/_Layout.cshtml.rz.scp.css */

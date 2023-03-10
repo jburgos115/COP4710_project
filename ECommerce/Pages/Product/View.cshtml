@@ -8,8 +8,8 @@
 
 
 <div class="row">
-    <div class="col">
-        <img src="/ProductImages/apple.png" alt="Apple" width="400" height="200">
+    <div class="col image-container" style="border:1px solid black">
+        <img src="/ProductImages/apple.png" alt="Apple" width="500" height="500">
     </div>
 
     
@@ -22,7 +22,7 @@
         </div>
         <hr>
         <div class="row">
-            <span><strong>Price:</strong> $@product.Price</span>
+            <span class="price">$@product.Price</span>
         </div>
         <hr>
         <div class="row">
@@ -30,4 +30,9 @@
             <p>@product.Description</p>
         </div>
     </div>
+
+    <div class="col purchase-container">
+		<a class="btn btn-primary" style="width: 100%" asp-area="" asp-route-cid=1 asp-page="../Index">Add to Cart</a>
+	</div>
+
 </div>
