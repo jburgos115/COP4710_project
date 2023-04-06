@@ -29,3 +29,18 @@
     width: 100%;
 }
 
+#availability{
+    padding: 20px 0px 20px 0px;
+    font-size: 20px;
+}
+
+.in-stock{
+    color: green;
+}
+
+.out-of-stock{
+    color: red;
+}
+
+
+
