@@ -21,8 +21,13 @@
     background: #6e6e6e;
 }
 
-.purchase-container{
-    width: 100px;
+#3-col-layout{
+    column-count: 3;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+#purchase-container{
+    width: 250px;
 }
 
 .btn-cart{

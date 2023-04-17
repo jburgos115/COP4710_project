@@ -8,7 +8,7 @@
 
 
 
-<div class="row">
+<div id="3-col-layout" class="row">
     <div class="col image-container" style="border:1px solid black">
         <img src=@ViewData["imgsrc"] alt="Apple" width="500" height="500">
     </div>
@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <div class="col purchase-container">
+    <div id="purchase-container" class="col-auto">
         <div id="availability">
             @if(@availability == 1)
             {

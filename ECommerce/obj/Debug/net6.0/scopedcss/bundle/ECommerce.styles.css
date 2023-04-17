@@ -29,8 +29,13 @@ img[b-dwu9w5ujii] {
     background: #6e6e6e;
 }
 
-.purchase-container[b-dwu9w5ujii]{
-    width: 100px;
+#3-col-layout[b-dwu9w5ujii]{
+    column-count: 3;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+#purchase-container[b-dwu9w5ujii]{
+    width: 250px;
 }
 
 .btn-cart[b-dwu9w5ujii]{

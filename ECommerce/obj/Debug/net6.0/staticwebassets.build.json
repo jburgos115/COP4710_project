@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Xk3ImD4BOOS83fYYMI3MJFpGh7tDlyvDKXrXN0KuMbU=",
+  "Hash": "y3x481cLa/R5nr/RLGa1fGNjvLOqT84aihKr5Umnxc0=",
   "Source": "ECommerce",
   "BasePath": "_content/ECommerce",
   "Mode": "Default",
@@ -1071,12 +1071,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\Jonah\\Desktop\\ecommerce\\ECommerce\\wwwroot\\ProductImages\\apple.png",
+      "Identity": "C:\\Users\\Jonah\\Desktop\\ecommerce\\ECommerce\\wwwroot\\ProductImages\\MUZ1amkgQXBwbGVz.png",
       "SourceId": "ECommerce",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Jonah\\Desktop\\ecommerce\\ECommerce\\wwwroot\\",
       "BasePath": "_content/ECommerce",
-      "RelativePath": "ProductImages/apple.png",
+      "RelativePath": "ProductImages/MUZ1amkgQXBwbGVz.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1085,7 +1085,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\ProductImages\\apple.png"
+      "OriginalItemSpec": "wwwroot\\ProductImages\\MUZ1amkgQXBwbGVz.png"
     }
   ]
 }
