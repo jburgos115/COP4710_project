@@ -6,7 +6,7 @@
 
 @if(TempData["success"] != null)
 {
-    <h2 style="color: white">@TempData["success"]</h2>
+    <h2>@TempData["success"]</h2>
 }
 else if(TempData["error"] != null)
 {
@@ -16,8 +16,8 @@ else if(TempData["error"] != null)
 <br>
 <div class="container border" style="padding:20px; width:50%">
     <form method="post">
-        <div class="FormBox" style="color: white">
-            <h2 style="color: white">Login or Register</h2>
+        <div class="FormBox">
+            <h2>Login or Register</h2>
             <hr>
             <br>
             <div class="text-danger" asp-validation-summary="ModelOnly"></div>
@@ -37,7 +37,7 @@ else if(TempData["error"] != null)
                 <input class="button button1" type="submit" value="Login">
                 <a class="button button1" asp-page="/LoginRegister/ForgotPassword">Forgot Password?</a>
             </div>
-            <p class="main" style="color: white">
+            <p class="main">
                 <span class="line"></span>
                 <span>or</span>
                 <span class="line"></span>
