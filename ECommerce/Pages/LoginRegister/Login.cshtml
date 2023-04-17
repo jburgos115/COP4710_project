@@ -1,0 +1,50 @@
+﻿@page
+@model ECommerce.Pages.LoginRegister.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+@if(TempData["success"] != null)
+{
+    <h2 style="color: white">@TempData["success"]</h2>
+}
+else if(TempData["error"] != null)
+{
+    <h2 style="color: red">@TempData["error"]</h2>
+}
+
+<br>
+<div class="container border" style="padding:20px; width:50%">
+    <form method="post">
+        <div class="FormBox" style="color: white">
+            <h2 style="color: white">Login or Register</h2>
+            <hr>
+            <br>
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="form--group row" style="margin-bottom:10px">
+                <div class="col-sm-12">
+                    <input placeholder="Email Address" type="text" asp-for="LoginInfo.Email" maxlength="100" class="form-control" />
+                </div>
+                <span class="text-danger" asp-validation-for="LoginInfo.Email"></span>
+            </div>
+            <div class="form--group row" style="margin-bottom:25px">
+                <div class="col-sm-12">
+                    <input placeholder="Password" type="password" asp-for="LoginInfo.Password" maxlength="8" class="form-control"/>
+                </div>
+                <span class="text-danger" asp-validation-for="LoginInfo.Password"></span>
+            </div>
+            <div class="form--group row justify-content-center">
+                <input class="button button1" type="submit" value="Login">
+                <a class="button button1" asp-page="/LoginRegister/ForgotPassword">Forgot Password?</a>
+            </div>
+            <p class="main" style="color: white">
+                <span class="line"></span>
+                <span>or</span>
+                <span class="line"></span>
+            </p>
+            <div class="form-group row justify-content-center">
+                <a class="button button1" asp-page="/LoginRegister/CustomerRegister">Signup</a>
+            </div>
+        </div>
+    </form>
+</div>
