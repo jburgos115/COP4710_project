@@ -6,6 +6,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ECommerce.Pages.LoginRegister
 {
@@ -13,6 +15,7 @@ namespace ECommerce.Pages.LoginRegister
     {
         [BindProperty]
         public LoginInfo LoginInfo { get; set; }
+        private readonly IConfiguration _configuration;
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -21,15 +24,20 @@ namespace ECommerce.Pages.LoginRegister
 
             try
             {
-                using (SqlConnection connection = new SqlConnection("Server =.; Database = CinemaBooking; Trusted_Connection = True"))
+                var connString = _configuration.GetConnectionString("DefaultConnection");
+                using (SqlConnection connection = new SqlConnection(connString))
                 {
                     connection.Open();
                     //Searches for User in Customer Table
-                    String myCommand = "SELECT * FROM Customer WHERE Email = @EmailAddress AND Password = @Password";
+                    String myCommand = "SELECT * FROM Customer WHERE Email = @EmailAddress AND PasswordHash = @Password";
                     SqlCommand cmd = new SqlCommand(myCommand, connection);
 
+                    SHA256 sha256 = SHA256.Create();
+                    byte[] bytes = Encoding.Unicode.GetBytes(LoginInfo.PasswordHash);
+                    byte[] hashValue = sha256.ComputeHash(bytes);
+
                     cmd.Parameters.Add("@EmailAddress", SqlDbType.NVarChar, 50).Value = LoginInfo.Email;
-                    cmd.Parameters.Add("@Password", SqlDbType.Char, 8).Value = LoginInfo.Password;
+                    cmd.Parameters.Add("@PasswordHash", SqlDbType.Char, 64).Value = hashValue;
                     int idNumber = Convert.ToInt32(cmd.ExecuteScalar());
 
                     if (idNumber > 0)
@@ -54,7 +62,7 @@ namespace ECommerce.Pages.LoginRegister
                     cmd = new SqlCommand(myCommand, connection);
 
                     cmd.Parameters.Add("@EmailAddress", SqlDbType.NVarChar, 50).Value = LoginInfo.Email;
-                    cmd.Parameters.Add("@Password", SqlDbType.Char, 8).Value = LoginInfo.Password;
+                    cmd.Parameters.Add("@Password", SqlDbType.Char, 8).Value = LoginInfo.PasswordHash;
                     idNumber = Convert.ToInt32(cmd.ExecuteScalar());
 
                     if (idNumber > 0)
@@ -79,7 +87,7 @@ namespace ECommerce.Pages.LoginRegister
                     cmd = new SqlCommand(myCommand, connection);
 
                     cmd.Parameters.Add("@EmailAddress", SqlDbType.NVarChar, 50).Value = LoginInfo.Email;
-                    cmd.Parameters.Add("@Password", SqlDbType.Char, 8).Value = LoginInfo.Password;
+                    cmd.Parameters.Add("@Password", SqlDbType.Char, 8).Value = LoginInfo.PasswordHash;
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     int ordEmpID = Convert.ToInt32(reader.GetOrdinal("EmpID"));
@@ -128,6 +136,6 @@ namespace ECommerce.Pages.LoginRegister
         [Required]
         [RegularExpression(@"^.{8,}$", ErrorMessage = "Minimum 8 characters required")]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
     }
 }
