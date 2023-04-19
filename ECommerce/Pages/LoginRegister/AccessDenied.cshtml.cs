@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ECommerce.Pages.Shared
+namespace ECommerce.Pages.LoginRegister
 {
-    public class ProfileButtonModel : PageModel
+    public class AccessDeniedModel : PageModel
     {
         public void OnGet()
         {
