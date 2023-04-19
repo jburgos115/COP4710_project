@@ -10,6 +10,29 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 		builder.Configuration.GetConnectionString("DefaultConnection")
 	));
 
+// Enable IConfiguration to read appsettings for connection string
+Host.CreateDefaultBuilder(args);
+
+/*******************/
+/* CLAIMS SERVICES */
+/*******************/
+
+builder.Services.AddAuthentication("MyCookieAuth").AddCookie("MyCookieAuth", options => {
+    options.Cookie.Name = "MyCookieAuth";
+    options.LoginPath = "/LoginRegister/Login";
+    options.AccessDeniedPath = "/LoginRegister/AccessDenied";
+    options.ExpireTimeSpan = TimeSpan.FromDays(1);
+});
+
+builder.Services.AddAuthorization(options => {
+    options.AddPolicy("UserCredentials",
+        policy => policy.RequireClaim("User", "General"));
+});
+
+/***********************/
+/* END CLAIMS SERVICES */
+/***********************/
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

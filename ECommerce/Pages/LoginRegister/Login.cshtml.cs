@@ -15,7 +15,14 @@ namespace ECommerce.Pages.LoginRegister
     {
         [BindProperty]
         public LoginInfo LoginInfo { get; set; }
+
         private readonly IConfiguration _configuration;
+
+        //Initialize configuration to read appsettings
+        public LoginModel(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -24,12 +31,13 @@ namespace ECommerce.Pages.LoginRegister
 
             try
             {
-                var connString = _configuration.GetConnectionString("DefaultConnection");
-                using (SqlConnection connection = new SqlConnection(connString))
+                //Read appsettings for connection string
+                string connectionString = _configuration["ConnectionStrings:DefaultConnection"];
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
                     //Searches for User in Customer Table
-                    String myCommand = "SELECT * FROM Customer WHERE Email = @EmailAddress AND PasswordHash = @Password";
+                    String myCommand = "SELECT * FROM [User] WHERE Email = @EmailAddress AND PasswordHash = @PasswordHash";
                     SqlCommand cmd = new SqlCommand(myCommand, connection);
 
                     SHA256 sha256 = SHA256.Create();
@@ -37,18 +45,19 @@ namespace ECommerce.Pages.LoginRegister
                     byte[] hashValue = sha256.ComputeHash(bytes);
 
                     cmd.Parameters.Add("@EmailAddress", SqlDbType.NVarChar, 50).Value = LoginInfo.Email;
-                    cmd.Parameters.Add("@PasswordHash", SqlDbType.Char, 64).Value = hashValue;
-                    int idNumber = Convert.ToInt32(cmd.ExecuteScalar());
+                    cmd.Parameters.Add("@PasswordHash", SqlDbType.Binary, 32).Value = hashValue;
+                    int id = Convert.ToInt32(cmd.ExecuteScalar());
 
-                    if (idNumber > 0)
+                    //Check if query returned a primary key
+                    if (id > 0)
                     {
                         //Builds the Users Id card
                         var claims = new List<Claim> {
                             new Claim(ClaimTypes.Name, LoginInfo.Email),
                             new Claim(ClaimTypes.Email, LoginInfo.Email),
-                            new Claim("UserCustomer", "Customer"),
-                            new Claim("UserId", idNumber.ToString())
-                    };
+                            new Claim("User", "General"),
+                            new Claim("UserId", id.ToString())
+                        };
                         //Creates Cookie for user session
                         var identity = new ClaimsIdentity(claims, "MyCookieAuth");
                         ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
@@ -57,6 +66,7 @@ namespace ECommerce.Pages.LoginRegister
 
                         return RedirectToPage("/Index");
                     }
+                    /*
                     //Searches for User in Crewmember Table if not found in Customer Table
                     myCommand = "SELECT* FROM Crewmember WHERE Email = @EmailAddress AND Password = @Password ";
                     cmd = new SqlCommand(myCommand, connection);
@@ -112,7 +122,7 @@ namespace ECommerce.Pages.LoginRegister
                         await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal);
 
                         return RedirectToPage("/Index");
-                    }
+                    }*/
                 }
             }
             catch (SqlException)

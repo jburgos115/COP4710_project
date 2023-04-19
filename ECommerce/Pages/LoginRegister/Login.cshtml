@@ -35,9 +35,9 @@ else if(TempData["error"] != null)
             </div>
             <div class="form--group row" style="margin-bottom:25px">
                 <div class="col-sm-12">
-                    <input placeholder="Password" type="password" asp-for="LoginInfo.Password" maxlength="8" class="form-control"/>
+                    <input placeholder="Password" type="password" asp-for="LoginInfo.PasswordHash" maxlength="8" class="form-control"/>
                 </div>
-                <span class="text-danger" asp-validation-for="LoginInfo.Password"></span>
+                <span class="text-danger" asp-validation-for="LoginInfo.PasswordHash"></span>
             </div>
             <div class="form--group row justify-content-center">
                 <input class="button button1" type="submit" value="Login">
