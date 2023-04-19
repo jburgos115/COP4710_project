@@ -2,12 +2,50 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 40%;
+    max-width: 500px;
+}
+
+.image-container{
+    width: 500px;
+    height: 500px;
+}
+
+.price{
+    font-size: 26px;
+    font-weight: bold;
 }
 
 .hline {
     width: 100%;
     height: 1px;
-    background: #6e6e6e
+    background: #6e6e6e;
 }
+
+#3-col-layout{
+    column-count: 3;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+#purchase-container{
+    width: 250px;
+}
+
+.btn-cart{
+    width: 100%;
+}
+
+#availability{
+    padding: 20px 0px 20px 0px;
+    font-size: 20px;
+}
+
+.in-stock{
+    color: green;
+}
+
+.out-of-stock{
+    color: red;
+}
+
+
 
