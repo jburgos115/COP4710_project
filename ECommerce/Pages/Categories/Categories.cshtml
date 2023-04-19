@@ -3,8 +3,8 @@
 @{
 	@foreach (var CatObj in Model.Category)
 	{
-		<a asp-area="" asp-route-id=@CatObj.CategoryID asp-page="/CategoriesDisplay/CategoriesDisplay">
-			<btn style="height:100px;width:200px">@CatObj.Name</btn>
+		<a style='text-decoration:none;' asp-area="" asp-route-id=@CatObj.CategoryID asp-page="/CategoriesDisplay/CategoriesDisplay">
+			<btn><txt>@CatObj.Name</txt><hr/><img src="/ProductImages/apple.png" alt="Apple" width="200" height="100"></btn>
 		</a>
 	}
 }

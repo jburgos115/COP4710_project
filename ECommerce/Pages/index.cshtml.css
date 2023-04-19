@@ -1,4 +1,4 @@
-btn[b-2ky7nzhi1s] {
+﻿btn {
     color: #ffffff;
     background-color: #1b6ec2;
     border-color: #1861ac;
@@ -12,23 +12,54 @@ btn[b-2ky7nzhi1s] {
     width: 400px;
 }
 
-btn:hover[b-2ky7nzhi1s]{
+btn:hover {
     background-color: #1861ac;
 }
 
-img[b-2ky7nzhi1s] {
+.category-image {
     float: right;
     display: inline;
     margin-left: auto;
 }
 
-txt[b-2ky7nzhi1s] {
+txt {
     margin-left: 10%;
 }
 
-hr[b-2ky7nzhi1s] {
+.button-divider {
     color: black;
     width: 5px;
     height: 100px;
     margin-left: 14%;
+}
+
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: left;
+}
+
+.product-image {
+    display: block;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 100%;
+}
+
+product-line {
+    width: 100%;
+    height: 1px;
+    background: #6e6e6e
+}
+
+.product-object {
+    display: flex;
+    height: 350px;
+}
+
+.break {
+    width: 100%;
+    height: 350px;
 }

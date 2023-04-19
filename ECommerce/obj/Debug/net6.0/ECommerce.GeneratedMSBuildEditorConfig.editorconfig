@@ -5,60 +5,61 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ECommerce
 build_property.RootNamespace = ECommerce
-build_property.ProjectDir = C:\Users\Jonah\Desktop\ecommerce\ECommerce\
+build_property.ProjectDir = C:\Users\Gavin\Documents\ecommerce\ECommerce\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Jonah\Desktop\ecommerce\ECommerce
+build_property.MSBuildProjectDirectory = C:\Users\Gavin\Documents\ecommerce\ECommerce
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Jonah/Desktop/ecommerce/ECommerce/Pages/CategoriesDisplay/CategoriesDisplay.cshtml]
+[C:/Users/Gavin/Documents/ecommerce/ECommerce/Pages/CategoriesDisplay/CategoriesDisplay.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmllc0Rpc3BsYXlcQ2F0ZWdvcmllc0Rpc3BsYXkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jonah/Desktop/ecommerce/ECommerce/Pages/Error.cshtml]
+[C:/Users/Gavin/Documents/ecommerce/ECommerce/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jonah/Desktop/ecommerce/ECommerce/Pages/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Jonah/Desktop/ecommerce/ECommerce/Pages/Privacy.cshtml]
+[C:/Users/Gavin/Documents/ecommerce/ECommerce/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jonah/Desktop/ecommerce/ECommerce/Pages/Shared/ProfileButton.cshtml]
+[C:/Users/Gavin/Documents/ecommerce/ECommerce/Pages/Shared/ProfileButton.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXFByb2ZpbGVCdXR0b24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jonah/Desktop/ecommerce/ECommerce/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Gavin/Documents/ecommerce/ECommerce/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jonah/Desktop/ecommerce/ECommerce/Pages/Shops.cshtml]
+[C:/Users/Gavin/Documents/ecommerce/ECommerce/Pages/Shops.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hvcHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jonah/Desktop/ecommerce/ECommerce/Pages/_ViewImports.cshtml]
+[C:/Users/Gavin/Documents/ecommerce/ECommerce/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jonah/Desktop/ecommerce/ECommerce/Pages/_ViewStart.cshtml]
+[C:/Users/Gavin/Documents/ecommerce/ECommerce/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jonah/Desktop/ecommerce/ECommerce/Pages/Categories/Categories.cshtml]
+[C:/Users/Gavin/Documents/ecommerce/ECommerce/Pages/Categories/Categories.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmllc1xDYXRlZ29yaWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-2ky7nzhi1s
 
-[C:/Users/Jonah/Desktop/ecommerce/ECommerce/Pages/Product/View.cshtml]
+[C:/Users/Gavin/Documents/ecommerce/ECommerce/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-j3njczn0xl
+
+[C:/Users/Gavin/Documents/ecommerce/ECommerce/Pages/Product/View.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdFxWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-dwu9w5ujii
 
-[C:/Users/Jonah/Desktop/ecommerce/ECommerce/Pages/Shared/_Layout.cshtml]
+[C:/Users/Gavin/Documents/ecommerce/ECommerce/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-6cep1rdz50

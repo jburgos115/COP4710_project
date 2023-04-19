@@ -1,20 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ECommerce.Data;
+using ECommerce.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECommerce.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ApplicationDbContext _db;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IEnumerable<Model.Category> Category { get; set; } //Category objects
+                                                                  //Database context
+        public IEnumerable<Model.Products> Products { get; set; }
+
+        public IEnumerable<Model.Represents> Represents { get; set; }
+
+        public IndexModel(ApplicationDbContext db)
         {
-            _logger = logger;
+            _db = db;
         }
 
         public void OnGet()
         {
-
+            Category = _db.Category; //Automatically opens db connection and executes SQL queries
+            Products = _db.Products;
+            Represents = _db.Represents;
         }
     }
 }

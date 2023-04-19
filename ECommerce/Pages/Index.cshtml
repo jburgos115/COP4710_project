@@ -4,7 +4,54 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to the Jungle</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<h1 class="display-4">Welcome to the Jungle</h1>
+<h2>Product Categories:</h2>
+@foreach (var CatObj in Model.Category)
+{
+    int count = 0;
+    <a style='text-decoration:none;' asp-area="" asp-route-id=@CatObj.CategoryID asp-page="/CategoriesDisplay/CategoriesDisplay">
+		<btn><txt>@CatObj.Name</txt><hr class = "button-divider"><img class = "category-image" src="/ProductImages/apple.png" alt="Apple" width="200" height="100"></btn>
+	</a>
+    @foreach (var ProdObj in Model.Products)
+    {
+        @foreach (var RepsObj in Model.Represents)
+        {
+            if (RepsObj.ProductID == ProdObj.ProductID && RepsObj.CategoryID == CatObj.CategoryID)
+            {
+                <div class="product-object" style="width: 33%; float:left;">
+                    <div class="row">
+                        <div class="col">
+                            <img class = "product-image" src="/ProductImages/apple.png" alt="Apple" width="400" height="200">
+                        </div>
+
+
+                        <div class = "col">
+                            <div class="row">
+                                    <h4>@ProdObj.Name</h4>
+                            </div>
+                            <div class="row">
+                                <a asp-page="\..\Shops" asp-route-shopid=@ProdObj.ShopID>Visit Shop</a>
+                            </div>
+                            <hr class = "product-line">
+                            <div class="row">
+                                <span><strong>Price:</strong> $@ProdObj.Price</span>
+                            </div>
+                            <hr class = "product-line">
+                            <div class="row">
+                                <h5>About this product</h5>
+                                <p>@ProdObj.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                count++;
+            }
+        }
+        if(count >= 3)
+        {
+            break;
+        }  
+    }
+    <div class="break"></div>
+}
