@@ -1,8 +1,8 @@
 ﻿@using System.Security.Claims
 @if (User.Identity.IsAuthenticated) 
 {
-	<form method="post" style="color:cornsilk" class="form-inline" asp-page="/LoginRegister/Logout">
-		Welcome @User.Identity.Name
+	<form method="post" class="form-inline" asp-page="/LoginRegister/Logout">
+		Welcome, @User.Identity.Name!
 		<button type="submit" class="btn btn-primary">Logout</button>
 	</form>
 }
