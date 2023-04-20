@@ -15,14 +15,5 @@ namespace ECommerce.Model
 
 		[Required(ErrorMessage = "Please provide a name", AllowEmptyStrings = false)]
 		public string Name { get; set; }
-
-		[Required(ErrorMessage = "Please provide a phone number", AllowEmptyStrings = false)]
-		public string Phone { get; set; }
-
-		[Required(ErrorMessage = "Please provide a shipping address", AllowEmptyStrings = false)]
-		public string Address { get; set; }
-
-		[Required(ErrorMessage = "Please provide billing info", AllowEmptyStrings = false)]
-		public string BillingInfo { get; set; }
 	}
 }

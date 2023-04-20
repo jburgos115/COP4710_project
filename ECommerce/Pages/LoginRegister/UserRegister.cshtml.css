@@ -1,0 +1,11 @@
+﻿.but1 {
+    background-color: maroon;
+    color: white;
+    transition-duration: 0.4s;
+    border-radius: 4px;
+}
+
+.but1:hover {
+    background-color: red;
+    color: white;
+}
