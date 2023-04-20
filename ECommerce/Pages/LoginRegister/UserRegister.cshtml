@@ -1,0 +1,61 @@
+﻿@page
+@model ECommerce.Pages.LoginRegister.UserRegisterModel
+@{
+}
+
+<style>
+	body {
+		background-color: black;
+	}
+	.but1 {
+		background-color: maroon;
+		color: white;
+		transition-duration: 0.4s;
+		border-radius: 4px;
+	}
+	.but1:hover {
+		background-color: red;
+		color: white;
+	}
+</style>
+
+<form method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="pl-3" style="color: white">Customer Registration</h2>
+			<hr style="color: white" />
+		</div>
+		<div class="mb-3" style="color: white">
+			<label asp-for="User.Name">First Name</label>
+			<input asp-for="User.Name" class="form-control" maxlength="50" />
+			<span asp-validation-for="User.Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3" style="color: white">
+			<label asp-for="User.Email">Email Address</label>
+			<input asp-for="User.Email" class="form-control" maxlength="50" />
+			<span asp-validation-for="User.Email" class="text-danger"></span>
+		</div>
+		<div class="mb-3" style="color: white">
+			<label asp-for="User.Address">Address</label>
+			<input asp-for="User.Address" class="form-control" maxlength="100" />
+			<span asp-validation-for="User.Address" class="text-danger"></span>
+		</div>
+		<div class="mb-3" style="color: white">
+			<label asp-for="User.Phone">Phone Number</label>
+			<input asp-for="User.Phone" class="form-control" maxlength="15" placeholder="(888) 888-8888" />
+			<span asp-validation-for="User.Phone" class="text-danger"></span>
+		</div>
+		<div class="mb-3" style="color: white">
+			<label asp-for="User.PasswordHash">Password</label>
+			<input asp-for="User.PasswordHash" type="password" class="form-control" maxlength="8" />
+			<span asp-validation-for="User.PasswordHash" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn but1" style="width:150px">Register</button>
+	</div>
+</form>
+
+@section Scripts {
+	@{
+	<partial name="_ValidationScriptsPartial"/>
+	}
+}
