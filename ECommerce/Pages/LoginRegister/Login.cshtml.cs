@@ -41,19 +41,26 @@ namespace ECommerce.Pages.LoginRegister
                     SqlCommand cmd = new SqlCommand(myCommand, connection);
 
                     SHA256 sha256 = SHA256.Create();
-                    byte[] bytes = Encoding.Unicode.GetBytes(LoginInfo.PasswordHash);
+                    byte[] bytes = Encoding.Unicode.GetBytes(LoginInfo.Password);
                     byte[] hashValue = sha256.ComputeHash(bytes);
 
                     cmd.Parameters.Add("@EmailAddress", SqlDbType.NVarChar, 50).Value = LoginInfo.Email;
                     cmd.Parameters.Add("@PasswordHash", SqlDbType.Binary, 32).Value = hashValue;
                     int id = Convert.ToInt32(cmd.ExecuteScalar());
 
+                    string userName = "";
+                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        dataReader.Read();
+                        userName = dataReader["Name"].ToString();
+                    }
+
                     //Check if query returned a primary key
                     if (id > 0)
                     {
                         //Builds the Users Id card
                         var claims = new List<Claim> {
-                            new Claim(ClaimTypes.Name, LoginInfo.Email),
+                            new Claim(ClaimTypes.Name, userName),
                             new Claim(ClaimTypes.Email, LoginInfo.Email),
                             new Claim("User", "General"),
                             new Claim("UserId", id.ToString())
@@ -146,6 +153,6 @@ namespace ECommerce.Pages.LoginRegister
         [Required]
         [RegularExpression(@"^.{8,}$", ErrorMessage = "Minimum 8 characters required")]
         [DataType(DataType.Password)]
-        public string PasswordHash { get; set; }
+        public string Password { get; set; }
     }
 }
