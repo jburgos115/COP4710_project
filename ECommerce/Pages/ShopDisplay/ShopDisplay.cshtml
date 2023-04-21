@@ -1,0 +1,35 @@
+﻿@page
+@model ECommerce.Pages.Shop.ShopDisplayModel
+@{
+	var shop = Model.Shop;
+
+	<h2 style="color:Blue;"> @shop.Name </h2>
+
+		<table class="table table-bordered table-striped" style="height:100%;width:100%;display:block;overflow:scroll">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Price</th
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var ProdObj in Model.Products)
+				{
+					if (ProdObj.ShopID == shop.ShopID)
+					{
+						<tr>
+							<td width="50%">@ProdObj.Name</td>
+							<td width="50%">@ProdObj.Description</td>
+							<td width="50%">@ProdObj.Price</td>
+							<td>
+								<div class="btn">
+									<a class="btn btn-primary" asp-area="" asp-route-pid=@ProdObj.ProductID asp-page="/Product/View">View</a>
+								</div>
+							</td>
+						</tr>
+					}
+				}
+			</tbody>
+		</table>
+	}

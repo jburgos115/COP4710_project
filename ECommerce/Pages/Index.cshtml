@@ -1,28 +1,31 @@
 ﻿@page
-@model IndexModel
+@model ECommerce.Pages.IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
-
 
 <h1 class="display-4">Welcome to the Jungle</h1>
 <h2>Product Categories:</h2>
 @foreach (var CatObj in Model.Category)
 {
+    string img;
     int count = 0;
     <a style='text-decoration:none;' asp-area="" asp-route-id=@CatObj.CategoryID asp-page="/CategoriesDisplay/CategoriesDisplay">
-		<btn><txt>@CatObj.Name</txt><hr class = "button-divider"><img class = "category-image" src="/ProductImages/apple.png" alt="Apple" width="200" height="100"></btn>
+        <a asp-page-handler="fetchImg" method="get"></a>
+        <btn><txt>@CatObj.Name</txt><hr class = "button-divider"><img class = "category-image" src=@ViewData["imgsrc"] alt="Apple" width="200" height="100"></btn>
 	</a>
-    @foreach (var ProdObj in Model.Products)
+    @foreach (var ProdObj in Model.Products_i)
     {
         @foreach (var RepsObj in Model.Represents)
         {
             if (RepsObj.ProductID == ProdObj.ProductID && RepsObj.CategoryID == CatObj.CategoryID)
             {
+                
                 <div class="product-object" style="width: 33%; float:left;">
                     <div class="row">
                         <div class="col">
-                            <img class = "product-image" src="/ProductImages/apple.png" alt="Apple" width="400" height="200">
+                                <a asp-page-handler="FetchImg" asp-route-id="@ProdObj.ProductID" method="get"></a>
+                                <img class = "product-image" src=@ViewData["imgsrc"] alt="Apple" width="400" height="200">
                         </div>
 
 

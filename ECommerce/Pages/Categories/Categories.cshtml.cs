@@ -1,6 +1,8 @@
 using ECommerce.Data;
+using ECommerce.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace ECommerce.Pages.Categories

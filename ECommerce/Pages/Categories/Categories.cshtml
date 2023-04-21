@@ -1,10 +1,13 @@
 ﻿@page
 @model ECommerce.Pages.Categories.CategoriesModel
 @{
-	@foreach (var CatObj in Model.Category)
-	{
-		<a style='text-decoration:none;' asp-area="" asp-route-id=@CatObj.CategoryID asp-page="/CategoriesDisplay/CategoriesDisplay">
-			<btn><txt>@CatObj.Name</txt><hr/><src=@ViewData["imgsrc"] alt="Apple" width="200" height="100"></btn>
-		</a>
-	}
+	ViewData["Title"] = "Categories page";
+	ViewData["imgsrc"] = "../ProductImages/MUZ1amkgQXBwbGVz.png";
+}
+
+@foreach (var CatObj in Model.Category)
+{
+	<a style='text-decoration:none;' asp-area="" asp-route-id=@CatObj.CategoryID asp-page="/CategoriesDisplay/CategoriesDisplay">
+		<btn><txt>@CatObj.Name</txt><hr class = "button-divider"><img class = "category-image" src=@ViewData["imgsrc"] alt="Apple" width="200" height="100"></btn>
+	</a>
 }

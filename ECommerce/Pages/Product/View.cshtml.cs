@@ -20,9 +20,9 @@ namespace ECommerce.Pages.Product
         {
             try
             {
-                // Retrieve product info by product id (pid)
+                //Retrieve product info by product id (pid)
                 Products = _db.Products.Find(pid);
-                // Generate unique identifier using base64 encoding to find product image
+                //Generate unique identifier using base64 encoding to find product image
                 string uniqueIdentifier = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Concat(Products.ProductID.ToString(), Products.Name)));
                 string imgPath = string.Concat("/ProductImages/", uniqueIdentifier, ".png");
                 
