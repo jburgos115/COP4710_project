@@ -29,13 +29,13 @@ else if(TempData["error"] != null)
             <div class="text-danger" asp-validation-summary="ModelOnly"></div>
             <div class="form--group row" style="margin-bottom:10px">
                 <div class="col-sm-12">
-                    <input placeholder="Email Address" type="text" asp-for="LoginInfo.Email" maxlength="100" class="form-control" />
+                    <input placeholder="Email Address" type="text" asp-for="LoginInfo.Email" maxlength="50" class="form-control" />
                 </div>
                 <span class="text-danger" asp-validation-for="LoginInfo.Email"></span>
             </div>
             <div class="form--group row" style="margin-bottom:25px">
                 <div class="col-sm-12">
-                    <input placeholder="Password" type="password" asp-for="LoginInfo.Password" maxlength="8" class="form-control"/>
+                    <input placeholder="Password" type="password" asp-for="LoginInfo.Password" maxlength="32" class="form-control"/>
                 </div>
                 <span class="text-danger" asp-validation-for="LoginInfo.Password"></span>
             </div>

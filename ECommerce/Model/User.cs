@@ -11,7 +11,7 @@ namespace ECommerce.Model
 
 		[Required(ErrorMessage = "Please provide a password", AllowEmptyStrings = false)]
 		[RegularExpression(@"^.{8,}$", ErrorMessage = "Minimum 8 characters required")]
-		public byte[] PasswordHash { get; set; }
+		public string Password { get; set; }
 
 		[Required(ErrorMessage = "Please provide a name", AllowEmptyStrings = false)]
 		public string Name { get; set; }
