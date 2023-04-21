@@ -1,1 +1,12 @@
-﻿
+﻿.but1 {
+    background-color: maroon;
+    color: white;
+    transition-duration: 0.4s;
+    border-radius: 4px;
+    font-size: 13.5px;
+}
+
+.but1:hover {
+    background-color: red;
+    color: white;
+}
