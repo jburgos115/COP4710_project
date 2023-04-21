@@ -3,22 +3,21 @@
     background-color: #1b6ec2;
     border-color: #1861ac;
     border-radius: 12px;
-    font-size: 25px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     margin: 25px;
-    height: 150px;
-    width: 400px;
+    height: 60px;
+    width: 180px;
     text-align: center;
 }
 
-btn:hover {
-    background-color: #1861ac;
-}
+    btn:hover {
+        background-color: #1861ac;
+    }
 
 
 txt {
     text-align: center;
     margin: auto;
 }
-

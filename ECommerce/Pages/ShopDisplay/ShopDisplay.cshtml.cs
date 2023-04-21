@@ -1,4 +1,5 @@
 using ECommerce.Data;
+using ECommerce.Pages.LoginRegister;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text;
@@ -7,7 +8,8 @@ namespace ECommerce.Pages.Shop
 {
 	public class ShopDisplayModel : PageModel
 	{
-		private readonly ApplicationDbContext _db;
+
+        private readonly ApplicationDbContext _db;
 
 		public Model.Shop Shop { get; set; }
 		public IEnumerable<Model.Products> Products { get; set; }

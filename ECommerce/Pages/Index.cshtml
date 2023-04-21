@@ -8,10 +8,21 @@
 <h2>Product Categories:</h2>
 @foreach (var CatObj in Model.Category)
 {
-    string img;
     int count = 0;
+    int tempID = 0;
+    @foreach (var RepsObj1 in Model.Represents)
+    {
+        if(RepsObj1.CategoryID == CatObj.CategoryID)
+        {
+            tempID = RepsObj1.ProductID;
+            break;
+        }
+    }
+
     <a style='text-decoration:none;' asp-area="" asp-route-id=@CatObj.CategoryID asp-page="/CategoriesDisplay/CategoriesDisplay">
-        <a asp-page-handler="fetchImg" method="get"></a>
+        @{
+            Model.OnGetFetchImg(tempID);
+        }
         <btn><txt>@CatObj.Name</txt><hr class = "button-divider"><img class = "category-image" src=@ViewData["imgsrc"] alt="Apple" width="200" height="100"></btn>
 	</a>
     @foreach (var ProdObj in Model.Products_i)
@@ -24,8 +35,10 @@
                 <div class="product-object" style="width: 33%; float:left;">
                     <div class="row">
                         <div class="col">
-                                <a asp-page-handler="FetchImg" asp-route-id="@ProdObj.ProductID" method="get"></a>
-                                <img class = "product-image" src=@ViewData["imgsrc"] alt="Apple" width="400" height="200">
+                            @{
+                                Model.OnGetFetchImg(@ProdObj.ProductID);
+                            }
+                            <img class = "product-image" src=@ViewData["imgsrc"] alt="Apple" width="400" height="200">
                         </div>
 
 
@@ -34,7 +47,7 @@
                                     <h4>@ProdObj.Name</h4>
                             </div>
                             <div class="row">
-                                <a asp-page="\..\Shops" asp-route-shopid=@ProdObj.ShopID>Visit Shop</a>
+                                <a asp-page="/ShopDisplay/ShopDisplay" asp-route-id=@ProdObj.ShopID>Visit Shop</a>
                             </div>
                             <hr class = "product-line">
                             <div class="row">

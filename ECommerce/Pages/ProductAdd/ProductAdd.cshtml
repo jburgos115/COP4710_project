@@ -1,0 +1,42 @@
+﻿@page
+@model ECommerce.Pages.ProductAdd.ProductAddModel
+@{
+	var shop = Model.Shop;
+
+	<h2 style="color:Blue;"> Product Add: @shop.Name </h2>
+
+    <form method="post">
+        <div class="FormBox">
+            <hr>
+            <br>
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="form--group row" style="margin-bottom:25px">
+                <div class="col-sm-12">
+                    <input placeholder="Product Name" type="text" asp-for="ProductAddInfo.Name" maxlength="50" class="form-control" />
+                </div>
+                <span class="text-danger" asp-validation-for="ProductAddInfo.Name"></span>
+            </div>
+            <div class="form--group row" style="margin-bottom:25px">
+                <div class="col-sm-12">
+                    <input placeholder="Description" type="text" asp-for="ProductAddInfo.Description" maxlength="100" class="form-control"/>
+                </div>
+                <span class="text-danger" asp-validation-for="ProductAddInfo.Description"></span>
+            </div>
+            <div class="form--group row" style="margin-bottom:25px">
+                <div class="col-sm-12">
+                    <input placeholder="Price" type="text" asp-for="ProductAddInfo.Price" maxlength="10" class="form-control"/>
+                </div>
+                <span class="text-danger" asp-validation-for="ProductAddInfo.Price"></span>
+            </div>
+            <div class="form--group row" style="margin-bottom:25px">
+                <div class="col-sm-12">
+                    <input placeholder="Quantity" type="text" asp-for="ProductAddInfo.Quantity" maxlength="8" class="form-control"/>
+                </div>
+                <span class="text-danger" asp-validation-for="ProductAddInfo.Quantity"></span>
+            </div>
+            <div class="form--group row justify-content-center">
+                <input class="button button1" type="submit" value="Submit">
+            </div>
+        </div>
+    </form>
+}

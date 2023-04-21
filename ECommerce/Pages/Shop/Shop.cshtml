@@ -7,7 +7,7 @@
 
 @foreach (var ShopObj in Model.Shop)
 {
-		<a style='text-decoration:none;' asp-area="" asp-route-id=@ShopObj.ShopID asp-page="/ShopDisplay/ShopDisplay">
-			<btn><txt>@ShopObj.Name</txt><hr class = "button-divider"><img class = "category-image" src=@ViewData["imgsrc"] alt="Apple" width="200" height="100"></btn>
-		</a>
+	<a style='text-decoration:none;' asp-area="" asp-route-id=@ShopObj.ShopID asp-page="/ShopDisplay/ShopDisplay">
+		<btn><txt>@ShopObj.Name</txt></btn>
+	</a>
 }
