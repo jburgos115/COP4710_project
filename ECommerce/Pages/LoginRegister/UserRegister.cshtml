@@ -1,0 +1,35 @@
+﻿@page
+@model ECommerce.Pages.LoginRegister.UserRegisterModel
+@{
+}
+
+<form method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="pl-3">New User Registration</h2>
+			<hr/>
+		</div>
+		<div class="mb-3">
+			<label asp-for="User.Name">First and Last Name</label>
+			<input asp-for="User.Name" class="form-control" maxlength="50" />
+			<span asp-validation-for="User.Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="User.Email">Email Address</label>
+			<input asp-for="User.Email" class="form-control" maxlength="50" />
+			<span asp-validation-for="User.Email" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="User.Password">Password</label>
+			<input asp-for="User.Password" type="password" class="form-control" maxlength="32" />
+			<span asp-validation-for="User.Password" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn but1" style="width:150px">Register</button>
+	</div>
+</form>
+
+@section Scripts {
+	@{
+	<partial name="_ValidationScriptsPartial"/>
+	}
+}
