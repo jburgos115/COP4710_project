@@ -1,0 +1,17 @@
+﻿@page
+@model ECommerce.Pages.LoginRegister.ProfileSettingsModel
+@{
+}
+
+@if(TempData["success"] != null)
+{
+	<h2 style="color: white">@TempData["success"]</h2>
+}
+
+
+
+@section Scripts {
+	@{
+	<partial name="_ValidationScriptsPartial"/>
+	}
+}
