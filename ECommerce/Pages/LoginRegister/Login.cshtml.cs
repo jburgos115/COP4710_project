@@ -48,16 +48,17 @@ namespace ECommerce.Pages.LoginRegister
                     cmd.Parameters.Add("@PasswordHash", SqlDbType.Binary, 32).Value = hashValue;
                     int id = Convert.ToInt32(cmd.ExecuteScalar());
 
-                    string userName = "";
-                    using (SqlDataReader dataReader = cmd.ExecuteReader())
-                    {
-                        dataReader.Read();
-                        userName = dataReader["Name"].ToString();
-                    }
 
                     //Check if query returned a primary key
                     if (id > 0)
                     {
+                        string userName = "";
+                        using (SqlDataReader dataReader = cmd.ExecuteReader())
+                        {
+                            dataReader.Read();
+                            userName = dataReader["Name"].ToString();
+                        }
+
                         //Builds the Users Id card
                         var claims = new List<Claim> {
                             new Claim(ClaimTypes.Name, userName),

@@ -3,6 +3,10 @@
 {
 	<form method="post" class="form-inline" asp-page="/LoginRegister/Logout">
 		Welcome, @User.Identity.Name!
+		
+		<a class="btn btn-primary" asp-page="/LoginRegister/UserSettings">
+		<i class="bi bi-person-square"></i> &nbsp;Profile</a>
+
 		<button type="submit" class="btn btn-primary">Logout</button>
 	</form>
 }
