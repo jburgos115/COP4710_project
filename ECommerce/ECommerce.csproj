@@ -7,16 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\NewFolder1\**" />
+    <Content Remove="Pages\NewFolder1\**" />
+    <EmbeddedResource Remove="Pages\NewFolder1\**" />
+    <None Remove="Pages\NewFolder1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\ProductImages\" />
   </ItemGroup>
    
 </Project>

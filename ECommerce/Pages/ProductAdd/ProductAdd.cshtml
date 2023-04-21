@@ -1,0 +1,30 @@
+﻿@page
+@model ECommerce.Pages.ProductAdd.ProductAddModel
+@{
+	var shop = Model.Shop;
+
+	<h2 style="color:Blue;"> Product Add: @shop.Name </h2>
+
+    <form method="post">
+        <div class="FormBox">
+            <hr>
+            <br>
+            <div class="mb-3">
+                <label asp-for="Products.Name">Name</label>
+                <input asp-for="Products.Name" class="form-control" maxlength="50" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Products.Description">Description</label>
+                <input asp-for="Products.Description" class="form-control" maxlength="200" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Products.Price">Price</label>
+                <input asp-for="Products.Price" class="form-control" maxlength="10" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Products.Quantity">Quantity</label>
+                <input asp-for="Products.Quantity" class="form-control" maxlength="10" />
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:150px;">Submit</button>
+    </form>
+}

@@ -1,0 +1,13 @@
+﻿@page
+@model ECommerce.Pages.Shop.ShopModel
+@{
+	ViewData["Title"] = "Shop page";
+	ViewData["imgsrc"] = "../ProductImages/MUZ1amkgQXBwbGVz.png";
+}
+
+@foreach (var ShopObj in Model.Shop)
+{
+	<a style='text-decoration:none;' asp-area="" asp-route-id=@ShopObj.ShopID asp-page="/ShopDisplay/ShopDisplay">
+		<btn><txt>@ShopObj.Name</txt></btn>
+	</a>
+}
