@@ -74,6 +74,9 @@ namespace ECommerce.Pages.LoginRegister
 
                         return RedirectToPage("/Index");
                     }
+
+                    cmd.Dispose();
+                    connection.Close();
                     /*
                     //Searches for User in Crewmember Table if not found in Customer Table
                     myCommand = "SELECT* FROM Crewmember WHERE Email = @EmailAddress AND Password = @Password ";
