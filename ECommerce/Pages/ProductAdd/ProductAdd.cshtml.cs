@@ -9,63 +9,38 @@ namespace ECommerce.Pages.ProductAdd
 {
     public class ProductAddModel : PageModel
     {
-        public ProductAddInfo ProductAddInfo { get; set; }
-
-        private readonly IConfiguration _configuration;
 
         private readonly ApplicationDbContext _db;
 
         public Model.Shop Shop { get; set; }
-        public IEnumerable<Model.Products> Products { get; set; }
 
-        public ProductAddModel(ApplicationDbContext db, IConfiguration configuration)
+        public Model.Products Products { get; set; }
+
+        public ProductAddModel(ApplicationDbContext db)
         {
             _db = db;
-            _configuration = configuration;
         }
         public void OnGet(int id)
         {
             Shop = _db.Shop.Find(id); //Automatically opens db connection and executes SQL queries
-            Products = _db.Products;
         }
-        public async Task<IActionResult> OnPostAddProduct()
+
+        public async Task<IActionResult> OnPost(Model.Products products)
         {
-            //Read appsettings for connection string
-            string connectionString = _configuration["ConnectionStrings:DefaultConnection"];
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            //products.ShopID = shop.ShopID;
+
+            try
             {
-                try
-                {
-                    connection.Open();
-                    //Searches for User in Customer Table
-                    String myCommand = "INSERT INTO Products (ShopID, Name, Description, Price, Quanity) VALUES (@shop.ShopID, @Name, @Description, @Price, @Quanity) ";
-                    SqlCommand cmd = new SqlCommand(myCommand, connection);
-                }
-                catch (SqlException)
-                {
-                    TempData["error"] = "Sorry, we are experiencing connection issues. Please try again later.";
-                }
+                await _db.Products.AddAsync(products);
+                await _db.SaveChangesAsync();
+                TempData["success"] = "New Paper Created Successfully";
+                return RedirectToPage("Upload", "PaperID", new { ProductID = products.ProductID });
             }
-            return Page();
+            catch (Exception ex)
+            {
+                TempData["error"] = "Sorry, we are unable to process your request at this time. Please try again later.";
+            }
+            return RedirectToPage("Index");
         }
-    }
-
-    public class ProductAddInfo
-    {
-        [Required]
-        [Display(Name = "Name")]
-        public string Name { get; set; }
-
-        [Required]
-        [Display(Name = "Description")]
-        public string Description { get; set; }
-
-        [Required]
-        [Display(Name = "Price")]
-        public decimal Price { get; set; }
-
-        [Required]
-        [Display(Name = "Quantity")]
-        public int Quantity { get; set; }
     }
 }
