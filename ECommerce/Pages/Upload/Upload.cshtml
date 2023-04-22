@@ -1,0 +1,16 @@
+﻿@page
+@model ECommerce.Pages.Upload.UploadModel
+@{
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary pl-3">New Product Image</h2>
+        </div>
+        <span>Select File:</span>
+        <input type="file" name="postedFiles" multiple />
+        <input type="submit" value="Upload" asp-page-handler="Upload"/>
+        <br/>
+    </div>
+</form>

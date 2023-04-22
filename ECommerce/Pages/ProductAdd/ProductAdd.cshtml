@@ -9,6 +9,10 @@
         <div class="FormBox">
             <hr>
             <br>
+            <div class="mb-3" style="display: none;" type="hidden">
+                <label  asp-for="Products.ShopID"></label>
+                <input  asp-for="Products.ShopID" class="form-control" maxlength="50" />
+            </div>
             <div class="mb-3">
                 <label asp-for="Products.Name">Name</label>
                 <input asp-for="Products.Name" class="form-control" maxlength="50" />

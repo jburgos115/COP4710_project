@@ -7,7 +7,7 @@
 
 @foreach (var ShopObj in Model.Shop)
 {
-	<a style='text-decoration:none;' asp-area="" asp-route-id=@ShopObj.ShopID asp-page="/ShopDisplay/ShopDisplay">
+	<a style='text-decoration:none;' asp-area="" asp-route-shopID=@ShopObj.ShopID asp-page="/ShopDisplay/ShopDisplay">
 		<btn><txt>@ShopObj.Name</txt></btn>
 	</a>
 }
