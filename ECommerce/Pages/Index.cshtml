@@ -3,13 +3,25 @@
 @{
     ViewData["Title"] = "Home page";
 }
+@if (ViewData["Error"] != null)
+{
+    <div class="red">
+        <p><strong>Error:</strong> @ViewData["Error"].ToString()</p>
+    </div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="green">
+        <p><strong>Success:</strong> @TempData["Success"].ToString()</p>
+    </div>
+}
 
 <h1 class="display-4">Welcome to the Jungle</h1>
 <h2>Product Categories:</h2>
 @foreach (var CatObj in Model.Category)
 {
     int count = 0;
-    int tempID = 0;
+    int tempID = 1;
     @foreach (var RepsObj1 in Model.Represents)
     {
         if(RepsObj1.CategoryID == CatObj.CategoryID)
