@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Cryptography;
 using System.Text;
+using System.IO;
+using System.Web;
 
 namespace ECommerce.Pages
 {
@@ -32,14 +34,29 @@ namespace ECommerce.Pages
 
         public void OnGetFetchImg(int pid)
 		{
-			// Retrieve product info by product id (pid)
-			Products = _db.Products.Find(pid);
-			// Generate unique identifier using base64 encoding to find product image
-			string uniqueIdentifier = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Concat(Products.ProductID.ToString(), Products.Name)));
-			string imgPath = string.Concat("/ProductImages/", uniqueIdentifier, ".png");
+            // Retrieve product info by product id (pid)
+            Products = _db.Products.Find(pid);
+            if (Products != null)
+            {
+                // Generate unique identifier using base64 encoding to find product image
+                string uniqueIdentifier = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Concat(Products.ProductID.ToString(), Products.Name)));
+                string filename = string.Concat("\\ProductImages\\", uniqueIdentifier, ".png");
 
-            // Store product image path to ViewData
-            ViewData["imgsrc"] = imgPath;
+                string imgDir = String.Concat(Directory.GetCurrentDirectory(), "\\wwwroot");
+                string imgPath = string.Concat(imgDir, filename);
+
+                // Check if image exists for product id
+                bool found = System.IO.File.Exists(imgPath);
+                if (found)
+                    ViewData["imgsrc"] = filename; // Pass image path if exists
+                else
+                    ViewData["imgsrc"] = "\\ProductImages\\default-image.png"; // Pass default image
+            }
+            else
+            {
+                ViewData["imgsrc"] = "\\ProductImages\\default-image.png";
+                Products = new Model.Products();
+            }
         }
     }
 }
