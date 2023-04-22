@@ -2,6 +2,7 @@ using ECommerce.Data;
 using ECommerce.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace ECommerce.Pages.Upload
@@ -26,7 +27,7 @@ namespace ECommerce.Pages.Upload
         }
 
         //Controller for uploading a pdf file to wwwroot/Uploads folder as a custom named file
-        public void OnPostUpload(List<IFormFile> postedFiles)
+        public async Task<IActionResult> OnPostUpload(List<IFormFile> postedFiles)
         {
             Products = _db.Products.Find(TempData["id"]);
 
@@ -51,8 +52,8 @@ namespace ECommerce.Pages.Upload
                     uploadedFiles.Add(imgPath);
                 }
                 TempData["success"] = "Uploaded Successfully";
-            }
-            Response.Redirect("../Index");
+			}
+			return RedirectToPage("../ShopDisplay/ShopDisplay", "ShopID", new { ShopID = Products.ShopID });
         }
     }
 }

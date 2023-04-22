@@ -1,9 +1,11 @@
 using ECommerce.Data;
+using ECommerce.Model;
 using ECommerce.Pages.LoginRegister;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ECommerce.Pages.Shop
 {
@@ -27,12 +29,8 @@ namespace ECommerce.Pages.Shop
 			Products = _db.Products;
 		}
 
-		public async Task<IActionResult> OnPostDelete(int pid)
+		public async Task<IActionResult> OnPostDelete(int pid, int sid)
 		{
-			int x = 0;
-			string shopTemp = (string)Request.Query["shopID"];
-			Int32.TryParse(shopTemp, out x);
-
 			var deleteProd = _db.Products.Find(pid);
 			try
 			{
@@ -49,7 +47,7 @@ namespace ECommerce.Pages.Shop
 			{
 				TempData["error"] = "Sorry, we are unable to process your request at this time. Please try again later.";
 			}
-			return RedirectToPage("../ShopDisplay/ShopDisplay", "shopID", x);
+			return RedirectToPage("../ShopDisplay/ShopDisplay", "ShopID", new { ShopID = sid });
 		}
 	}
 }

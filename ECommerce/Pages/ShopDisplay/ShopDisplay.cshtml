@@ -36,8 +36,8 @@
 								{
 									<td>
 										<div class="btn">
-											<form asp-page-handler="delete" asp-route-pid=@ProdObj.ProductID pid method="post">
-												<button pid=@ProdObj.ProductID class="btn btn-danger">Delete</button>
+											<form asp-page-handler="delete" asp-route-pid=@ProdObj.ProductID asp-route-sid=@shop.ShopID method="post">
+												<button pid=@ProdObj.ProductID sid=@shop.ShopID class="btn btn-danger">Delete</button>
 											</form>
 										</div>
 									</td>
