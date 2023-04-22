@@ -5,6 +5,8 @@ using Microsoft.Data.SqlClient;
 using System.Data;
 using ECommerce.Data;
 using ECommerce.Model;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 
 /*
  * Profile Settings Page allowing for a user to update their information
@@ -57,11 +59,9 @@ namespace ECommerce.Pages.LoginRegister
                 TempData["error"] = "Sorry, we are unable to process your request at this time. Please try again later.";
                 Response.Redirect("/../Index");
             }
-
-            //return Page();
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             try
             {
@@ -83,10 +83,31 @@ namespace ECommerce.Pages.LoginRegister
 
                     int success = Convert.ToInt32(cmd.ExecuteNonQuery());
 
-                    //Check if query was unsuccessful
-                    if (success < 1)
+                    //Check if query was successful
+                    if (success > 0)
                     {
-                        TempData["error"] = "There was an error updating your profile, please try again later.";
+                        //Check if user has a cookie
+                        var identity = User.Identity as ClaimsIdentity;
+                        if (identity != null)
+                        {
+                            //Check for existing claim(s) and remove it
+                            var nameClaim = identity.FindFirst(ClaimTypes.Name);
+                            var emailClaim = identity.FindFirst(ClaimTypes.Email);
+                            if (nameClaim != null && emailClaim != null)
+                            {
+                                identity.RemoveClaim(nameClaim);
+                                identity.RemoveClaim(emailClaim);
+                            }
+                            //Add new claims
+                            identity.AddClaim(new Claim(ClaimTypes.Name, general.Name));
+                            identity.AddClaim(new Claim(ClaimTypes.Email, general.Email));
+
+                            //Create new cookie and replace old one
+                            ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
+                            await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal);
+                        }
+                        else
+                            TempData["error"] = "There was an error updating your profile, please try again later.";
                     }
 
                     cmd.Dispose();
