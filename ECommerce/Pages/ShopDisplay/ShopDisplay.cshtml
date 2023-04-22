@@ -1,7 +1,9 @@
 ﻿@page
 @model ECommerce.Pages.Shop.ShopDisplayModel
+@using System.Security.Claims
 @{
 	var shop = Model.Shop;
+	var user = Model.User;
 
 	<h2 style="color:Blue;"> @shop.Name </h2>
 
@@ -27,13 +29,34 @@
 									<a class="btn btn-primary" asp-area="" asp-route-pid=@ProdObj.ProductID asp-page="/Product/View">View</a>
 								</div>
 							</td>
+							@if (User.Identity.IsAuthenticated)
+							{
+								var userID = User.FindFirst("UserID").Value;
+								if (shop.OwnerID.ToString() == userID)
+								{
+									<td>
+										<div class="btn">
+											<form asp-page-handler="delete" asp-route-pid=@ProdObj.ProductID asp-route-sid=@shop.ShopID method="post">
+												<button pid=@ProdObj.ProductID sid=@shop.ShopID class="btn btn-danger">Delete</button>
+											</form>
+										</div>
+									</td>
+								}
+							}
 						</tr>
 					}
 				}
 			</tbody>
-		</table>
+	</table>
 
-		<a style='text-decoration:none;' asp-area="" asp-route-id=@shop.ShopID asp-page="/ProductAdd/ProductAdd">
+	@if (User.Identity.IsAuthenticated)
+	{
+		var userID = User.FindFirst("UserID").Value;
+		if (shop.OwnerID.ToString() == userID)
+		{
+			<a style='text-decoration:none;' asp-area="" asp-route-shopID=@shop.ShopID asp-page="/ProductAdd/ProductAdd">
 				<btn><txt>Add a Product</txt></btn>
-		</a>
+			</a>
+		}
 	}
+}
