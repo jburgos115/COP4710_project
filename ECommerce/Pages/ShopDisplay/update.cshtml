@@ -1,0 +1,25 @@
+﻿@page
+@model ECommerce.Pages.ShopDisplay.updateModel
+@{
+	var shopObj = Model.Shop;
+}
+
+<form method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="pl-3">Edit Shop</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="Shop.Name">Name</label>
+			<input asp-for="Shop.Name" class="form-control" maxlength="30" />
+			<span asp-validation-for="Shop.Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Shop.Description">Description</label>
+			<input asp-for="Shop.Description" class="form-control" maxlength="50" />
+			<span asp-validation-for="Shop.Description" class="text-danger"></span>
+		</div>
+		<button type="submit" sid=@shopObj.ShopID class="btn btn-primary" style="width:150px">Update</button>
+	</div>
+</form>

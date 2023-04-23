@@ -7,6 +7,8 @@
 
 	<h2 style="color:Blue;"> @shop.Name </h2>
 
+	<h4 style="color:Black;"> @shop.Description </h4>
+
 		<table class="table table-bordered table-striped" style="height:100%;width:100%;display:block;overflow:scroll">
 			<thead>
 				<tr>
@@ -61,6 +63,9 @@
 		var userID = User.FindFirst("UserID").Value;
 		if (shop.OwnerID.ToString() == userID)
 		{
+			<a style='text-decoration:none;' asp-area="" asp-route-sid=@shop.ShopID asp-page="/ShopDisplay/Update">
+				<btn><txt>Edit Shop</txt></btn>
+			</a>
 			<a style='text-decoration:none;' asp-area="" asp-route-shopID=@shop.ShopID asp-page="/ProductAdd/ProductAdd">
 				<btn><txt>Add a Product</txt></btn>
 			</a>
