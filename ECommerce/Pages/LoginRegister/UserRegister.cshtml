@@ -24,7 +24,11 @@
 			<input asp-for="User.Password" type="password" class="form-control" maxlength="32" />
 			<span asp-validation-for="User.Password" class="text-danger"></span>
 		</div>
-		<button type="submit" class="btn but1" style="width:150px">Register</button>
+		<div class="mb-3">
+			<input asp-for="ownerAccount" type="checkbox" value=true>
+			<label asp-for="ownerAccount">Shop Owner?</label>
+		</div>
+		<button  type="submit" owner=ownerAccount class="btn but1" style="width:150px">Register</button>
 	</div>
 </form>
 

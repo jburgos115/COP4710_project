@@ -17,13 +17,15 @@ namespace ECommerce.Pages.LoginRegister
 
         public Model.User User { get; set; }
 
+        public Boolean ownerAccount;
+
         public UserRegisterModel(ApplicationDbContext db, IConfiguration configuration)
         {
             _db = db;
             _configuration = configuration;
         }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPost(bool ownerAccount)
         {
             if (!ModelState.IsValid)
                 return Page();
@@ -36,7 +38,7 @@ namespace ECommerce.Pages.LoginRegister
                 {
                     connection.Open();
                     //Searches for User in Customer Table
-                    String myCommand = "INSERT INTO [User] (Email, PasswordHash, Name) VALUES(@Email, @PasswordHash, @Name)";
+                    String myCommand = "INSERT INTO [User] (Email, PasswordHash, Name) output INSERTED.UserID VALUES(@Email, @PasswordHash, @Name)";
                     SqlCommand cmd = new SqlCommand(myCommand, connection);
 
                     SHA256 sha256 = SHA256.Create();
@@ -46,15 +48,17 @@ namespace ECommerce.Pages.LoginRegister
                     cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 50).Value = User.Email;
                     cmd.Parameters.Add("@PasswordHash", SqlDbType.Binary, 32).Value = hashValue;
                     cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = User.Name;
-                    int id = Convert.ToInt32(cmd.ExecuteNonQuery());
+                    int modified = (int)cmd.ExecuteScalar();
 
-                    //Check if query was correctly inserted into the table
-                    if (id > 0)
+					TempData["success"] = "Registration was Successful";
+					if (ownerAccount == false)
                     {
-                        TempData["success"] = "Registration was Successful";
                         return RedirectToPage("/LoginRegister/Login");
                     }
-                    //else TODO
+                    else
+                    {
+						return RedirectToPage("/LoginRegister/CreateShop", "UserID", new { UserID = modified });
+					}
                 }
             }
             catch (SqlException)

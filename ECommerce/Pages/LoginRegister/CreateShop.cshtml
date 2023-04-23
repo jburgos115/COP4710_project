@@ -1,0 +1,21 @@
+﻿@page
+@model ECommerce.Pages.LoginRegister.CreateShopModel
+@{
+}
+
+<h2 style="color:Blue;"> Create Shop </h2>
+
+    <form method="post">
+        <div class="FormBox">
+            <hr>
+            <br>
+            <div class="mb-3">
+                <label asp-for="Shop.Name">Name</label>
+                <input asp-for="Shop.Name" class="form-control" maxlength="50" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Shop.Description">Description</label>
+                <input asp-for="Shop.Description" class="form-control" maxlength="200" />
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:150px;">Submit</button>
+    </form>
