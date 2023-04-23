@@ -64,7 +64,7 @@ namespace ECommerce.Pages.LoginRegister
                             new Claim(ClaimTypes.Name, userName),
                             new Claim(ClaimTypes.Email, LoginInfo.Email),
                             new Claim("User", "General"),
-                            new Claim("UserId", id.ToString())
+                            new Claim("UserID", id.ToString())
                         };
                         //Creates Cookie for user session
                         var identity = new ClaimsIdentity(claims, "MyCookieAuth");
@@ -74,6 +74,12 @@ namespace ECommerce.Pages.LoginRegister
 
                         return RedirectToPage("/Index");
                     }
+
+
+
+
+                    cmd.Dispose();
+                    connection.Close();
                     /*
                     //Searches for User in Crewmember Table if not found in Customer Table
                     myCommand = "SELECT* FROM Crewmember WHERE Email = @EmailAddress AND Password = @Password ";
