@@ -1,0 +1,39 @@
+﻿@page
+@model ECommerce.Pages.LoginRegister.ProfileSettingsModel
+@{
+}
+
+@if(TempData["success"] != null)
+{
+	<h2 style="color: white">@TempData["success"]</h2>
+}
+
+@if(User.HasClaim("User", "General")) {
+<form method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="pl-3">Edit Profile</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="general.Name">Username</label>
+			<input asp-for="general.Name" class="form-control" maxlength="30" />
+			<span asp-validation-for="general.Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="general.Email">Email Address</label>
+			<input asp-for="general.Email" class="form-control" maxlength="50" />
+			<span asp-validation-for="general.Email" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn but1" style="width:150px">Update</button>
+		<a asp-page="/Transactions/List" class="btn but1">Payment History</a>
+	</div>
+	
+</form>
+}
+
+@section Scripts {
+	@{
+	<partial name="_ValidationScriptsPartial"/>
+	}
+}

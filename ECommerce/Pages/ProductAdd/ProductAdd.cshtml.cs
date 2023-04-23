@@ -39,7 +39,7 @@ namespace ECommerce.Pages.ProductAdd
             {
                 await _db.Products.AddAsync(products);
                 await _db.SaveChangesAsync();
-                TempData["success"] = "New Paper Created Successfully";
+                TempData["success"] = "New Product Created Successfully";
                 return RedirectToPage("../Upload/Upload", "ProductID", new { ProductID = products.ProductID });
             }
             catch (Exception ex)
