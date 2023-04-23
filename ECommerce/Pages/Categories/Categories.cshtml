@@ -6,7 +6,7 @@
 
 @foreach (var CatObj in Model.Category)
 {
-    int tempID = 0;
+    int tempID = 1;
     @foreach (var RepsObj1 in Model.Represents)
     {
         if (RepsObj1.CategoryID == CatObj.CategoryID)

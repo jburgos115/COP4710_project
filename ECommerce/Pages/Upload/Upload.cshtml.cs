@@ -20,7 +20,7 @@ namespace ECommerce.Pages.Upload
             _db = db;
         }
 
-        //Retrieves PaperID to attach to file upload
+        //Retrieves ProductID to attach to file upload
         public void OnGetProductID(int ProductID)
         {
             TempData["id"] = ProductID;
