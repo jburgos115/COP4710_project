@@ -12,12 +12,12 @@
 		</div>
 		<div class="mb-3">
 			<label asp-for="Shop.Name">Name</label>
-			<input asp-for="Shop.Name" class="form-control" maxlength="30" />
+			<input asp-for="Shop.Name" class="form-control" maxlength="50" />
 			<span asp-validation-for="Shop.Name" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
 			<label asp-for="Shop.Description">Description</label>
-			<input asp-for="Shop.Description" class="form-control" maxlength="50" />
+			<input asp-for="Shop.Description" class="form-control" maxlength="500" />
 			<span asp-validation-for="Shop.Description" class="text-danger"></span>
 		</div>
 		<button type="submit" sid=@shopObj.ShopID class="btn btn-primary" style="width:150px">Update</button>

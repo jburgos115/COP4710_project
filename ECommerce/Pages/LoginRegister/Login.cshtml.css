@@ -23,18 +23,29 @@
     border: 2px solid #4CAF50;
 }
 
-    .button1:hover {
-        background-color: #4CAF50;
-        color: white;
-    }
+.button1:hover {
+    background-color: #4CAF50;
+    color: white;
+}
 
 .main {
     display: flex;
     align-items: center;
 }
 
-.line {
+.line-left {
     flex-grow: 1;
-    border-bottom: 1px solid white;
-    margin: 5px
+    border-bottom: 1px solid black;
+    max-width: 105px;
+}
+
+.line-or {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.line-right {
+    flex-grow: 1;
+    border-bottom: 1px solid black;
+    max-width: 105px;
 }

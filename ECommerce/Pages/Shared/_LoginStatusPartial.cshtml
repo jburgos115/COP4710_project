@@ -2,15 +2,16 @@
 @if (User.Identity.IsAuthenticated) 
 {
 	<form method="post" class="form-inline" asp-page="/LoginRegister/Logout">
-		Welcome, @User.Identity.Name!
+		<span style="margin-right: 20px">Welcome, @User.Identity.Name!</span>
 		
 		<a class="btn btn-primary" asp-page="/LoginRegister/ProfileSettings">
 		<i class="bi bi-person-square"></i> &nbsp;Profile</a>
 
-		<button type="submit" class="btn btn-primary">Logout</button>
+		<button type="submit" class="btn btn-primary">Sign Out</button>
 	</form>
 }
 else
 {
-	<a class="btn btn-primary" asp-page="/LoginRegister/Login">Login</a>
+	<a class="btn btn-primary" asp-page="/LoginRegister/Login">Log In</a>
+	<a class="btn btn-primary" asp-page="/LoginRegister/UserRegister">Sign Up</a>
 }

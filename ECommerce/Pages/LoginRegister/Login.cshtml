@@ -17,13 +17,20 @@ else if(TempData["error"] != null)
      $(document).ready(function () {
          $('header').empty();
      });
- </script>
+</script>
 
 <br>
+<div class="main justify-content-center">
+     <a href="/">
+         <img src=~/jungle_com_logo.png />
+     </a>
+</div>
+<br>
+
 <div class="container border" style="padding:20px; width:50%">
     <form method="post">
         <div class="FormBox">
-            <h2>Login or Register</h2>
+            <h2>Log In</h2>
             <hr>
             <br>
             <div class="text-danger" asp-validation-summary="ModelOnly"></div>
@@ -41,15 +48,18 @@ else if(TempData["error"] != null)
             </div>
             <div class="form--group row justify-content-center">
                 <input class="button button1" type="submit" value="Login">
-                <a class="button button1" asp-page="/LoginRegister/ForgotPassword">Forgot Password?</a>
+                <!-- <a class="button button1" asp-page="/LoginRegister/ForgotPassword">Forgot Password?</a>  -->
             </div>
-            <p class="main">
-                <span class="line"></span>
-                <span>or</span>
-                <span class="line"></span>
-            </p>
-            <div class="form-group row justify-content-center">
-                <a class="button button1" asp-page="/LoginRegister/UserRegister">Signup</a>
+            <div class="main justify-content-center">
+                <span class="line-left"></span>
+                <span class="line-or">or</span>
+                <span class="line-right"></span>
+            </div>
+            <div class="main justify-content-center">
+                <span>
+                    New to Jungle?
+                    <a href="~/LoginRegister/UserRegister">Sign Up</a>
+                </span>
             </div>
         </div>
     </form>
