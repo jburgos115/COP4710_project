@@ -1,0 +1,53 @@
+﻿@page
+@model ECommerce.Pages.Purchase.PurchaseModel
+@{
+    var order = Model.Order;
+    var product = Model.Products;
+    decimal OrderAmount = 0;
+}
+
+
+<h2 style="color:Blue;"> Purchase Product: @product.Name </h2>
+
+<form method="post">
+    <div class="FormBox">
+        <hr>
+        <br>
+        <div class="mb-3">
+            <label asp-for="Order.BuyQuantity">Purchase Quantity</label>
+            <input asp-for="Order.BuyQuantity" class="form-control" maxlength="10" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Order.Street">Delivery Street Address</label>
+            <input asp-for="Order.Street" class="form-control" maxlength="100" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Order.City">Delivery City</label>
+            <input asp-for="Order.City" class="form-control" maxlength="100" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Order.State">Delivery State Abbreviation</label>
+            <input asp-for="Order.State" class="form-control" maxlength="2" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Order.Zip">Zip Code</label>
+            <input asp-for="Order.Zip" class="form-control" maxlength="5" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Order.CardNum">Card Number</label>
+            <input asp-for="Order.CardNum" class="form-control" maxlength="16" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Order.CardExpMonth">Card Expiration Month</label>
+            <input asp-for="Order.CardExpMonth" class="form-control" maxlength="2" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Order.CardExpYear">Card Expiration Year</label>
+            <input asp-for="Order.CardExpYear" class="form-control" maxlength="4" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Order.NameOnCard">Name On Card</label>
+            <input asp-for="Order.NameOnCard" class="form-control" maxlength="100" />
+        </div>
+    <button type="submit" pid=@product.ProductID class="btn btn-primary" style="width:150px;">Submit</button>
+</form>

@@ -1,7 +1,8 @@
 ﻿@page
 @model ECommerce.Pages.ProductAdd.ProductAddModel
 @{
-	var shop = Model.Shop;
+    var shop = Model.Shop;
+    int count = 0;
 
 	<h2 style="color:Blue;"> Product Add: @shop.Name </h2>
 
@@ -29,6 +30,18 @@
                 <label asp-for="Products.Quantity">Quantity</label>
                 <input asp-for="Products.Quantity" class="form-control" maxlength="10" />
             </div>
+            <div class="mb-3">
+                <Text>Categories:</Text>
+            </div>
+            @foreach (var CatObj in Model.Category)
+            {
+                <div class="mb-3">
+                    <input asp-for="catList[count]" type="checkbox" value=true>
+                    <label asp-for="catList[count]">@CatObj.Name</label>
+                </div>
+                count++;
+            }
             <button type="submit" class="btn btn-primary" style="width:150px;">Submit</button>
     </form>
 }
+

@@ -35,7 +35,7 @@ namespace ECommerce.Pages.Update
 				{
 					connection.Open();
 
-					//Update User details in User table
+					//Update Product details in Products table
 					String myCommand = "UPDATE [Products] SET Name = @Name, Description = @Description, Price = @Price, Quantity = @Quantity WHERE ProductID = @ProductID";
 
 					SqlCommand cmd = new SqlCommand(myCommand, connection);
