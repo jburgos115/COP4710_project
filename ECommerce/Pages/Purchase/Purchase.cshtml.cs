@@ -58,27 +58,12 @@ namespace ECommerce.Pages.Purchase
 
                     cmd.Dispose();
                     connection.Close();
-
-                    TempData["success"] = "Order processed successfully";
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["error"] = "Sorry, we are unable to process your request at this time. Please try again later.";
-            }
-
-            int newQuantity = Products.Quantity - order.BuyQuantity;
-
-            try
-            {
-                string connectionString = _configuration["ConnectionStrings:DefaultConnection"];
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
                     connection.Open();
-                    //Update Quantity details in Products table
-                    String myCommand = "UPDATE [Products] SET Quantity = @Quantity WHERE ProductID = @ProductID";
 
-                    SqlCommand cmd = new SqlCommand(myCommand, connection);
+                    int newQuantity = Products.Quantity - order.BuyQuantity;
+                    String myCommand2 = "UPDATE [Products] SET Quantity = @Quantity WHERE ProductID = @ProductID";
+
+                    SqlCommand cmd2 = new SqlCommand(myCommand2, connection);
                     cmd = new SqlCommand(myCommand, connection);
 
                     cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = newQuantity;
