@@ -34,8 +34,6 @@ namespace ECommerce.Pages.Product
                 Response.Redirect("/../Error");
             }
         }
-
-        
     }
 
 }

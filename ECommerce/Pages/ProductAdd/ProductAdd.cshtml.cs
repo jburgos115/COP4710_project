@@ -54,11 +54,30 @@ namespace ECommerce.Pages.ProductAdd
 
             products.ShopID = x;
 
+            int prodID = 0;
+
             try
             {
-                await _db.Products.AddAsync(products);
-                await _db.SaveChangesAsync();
-                TempData["success"] = "New Product Created Successfully";
+                string connectionString = _configuration["ConnectionStrings:DefaultConnection"];
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    //Inserts Product into Table
+                    String myCommand = "INSERT INTO [Products] (ShopID, Name, Description, Price, Quantity) output INSERTED.ProductID VALUES(@ShopID, @Name, @Description, @Price, @Quantity)";
+                    SqlCommand cmd = new SqlCommand(myCommand, connection);
+
+                    cmd.Parameters.Add("@ShopID", SqlDbType.Int).Value = x;
+                    cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = products.Name;
+                    cmd.Parameters.Add("@Description", SqlDbType.Text).Value = products.Description;
+                    cmd.Parameters.Add("@Price", SqlDbType.Decimal).Value = products.Price;
+                    cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = products.Quantity;
+                    prodID = (int)cmd.ExecuteScalar();
+
+                    cmd.Dispose();
+                    connection.Close();
+
+                    TempData["success"] = "Profile Updated Successfully";
+                }
             }
             catch (Exception ex)
             {
@@ -75,12 +94,12 @@ namespace ECommerce.Pages.ProductAdd
                         using (SqlConnection connection = new SqlConnection(connectionString))
                         {
                             connection.Open();
-                            //Searches for User in Customer Table
+                            //Inserts Represents into Table
                             String myCommand = "INSERT INTO [Represents] (CategoryID, ProductID) VALUES(@CategoryID, @ProductID)";
                             SqlCommand cmd = new SqlCommand(myCommand, connection);
 
                             cmd.Parameters.Add("@CategoryID", SqlDbType.Int).Value = i;
-                            cmd.Parameters.Add("@ProductID", SqlDbType.Int).Value = products.ProductID;
+                            cmd.Parameters.Add("@ProductID", SqlDbType.Int).Value = prodID;
                             int success = Convert.ToInt32(cmd.ExecuteNonQuery());
 
                             //Check if query was unsuccessful
@@ -103,7 +122,7 @@ namespace ECommerce.Pages.ProductAdd
                 }
             }
 
-            return RedirectToPage("../Upload/Upload", "ProductID", new { ProductID = products.ProductID });
+            return RedirectToPage("../Upload/Upload", "ProductID", new { ProductID = prodID });
 
         }
     }

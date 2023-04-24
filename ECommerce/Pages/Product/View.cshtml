@@ -32,18 +32,37 @@
         </div>
     </div>
 
-    <div id="purchase-container" class="col-auto">
-        <div id="availability">
-            @if(@availability == 1)
-            {
-                <span class="in-stock">In Stock</span>
-            }
-            else
-            {
-                <span class="out-of-stock">Out of Stock</span>
-            }
-        </div>
-		<a class="btn btn-primary" style="width: 100%" asp-area="" asp-route-cid=1 asp-page="../Index">Add to Cart</a>
-	</div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div id="purchase-container" class="col-auto">
+            <div id="availability">
+                @if (@availability == 1)
+                {
+                    <span class="in-stock">In Stock</span>
+                }
+                else
+                {
+                    <span class="out-of-stock">Out of Stock</span>
+                }
+            </div>
+		    <a class="btn btn-primary" style="width: 100%" asp-area="" asp-route-pid=@product.ProductID asp-page="../Purchase/Purchase">Purchase</a>
+	    </div>
+    }
+    else
+    {
+            <div id="purchase-container" class="col-auto">
+                <div id="availability">
+                @if (@availability == 1)
+                {
+                            <span class="in-stock">In Stock</span>
+                }
+                else
+                {
+                            <span class="out-of-stock">Out of Stock</span>
+                }
+                </div>
+                <button class="btn btn-secondary" style="width: 100%">Sign in to Purchase</button>
+            </div>
+    }
 
 </div>
