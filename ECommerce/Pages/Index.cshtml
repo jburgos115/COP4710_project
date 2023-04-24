@@ -36,7 +36,9 @@
                             @{
                                 Model.OnGetFetchImg(@ProdObj.ProductID);
                             }
-                            <img class = "product-image" src=@ViewData["imgsrc"] alt="Apple" width="400" height="200">
+                            <a href="/Product/View?pid=@ProdObj.ProductID">
+                                <img class = "product-image" src=@ViewData["imgsrc"] alt="Apple" width="400" height="200">
+                            </a>
                         </div>
 
 
