@@ -1,0 +1,40 @@
+﻿@page
+@model ECommerce.Pages.Order.OrderSummaryModel
+@using System.Security.Claims
+@{
+
+}
+
+<h2 style="color:Blue;"> Order Summary </h2>
+
+@if(Model.OrderList.Count < 1)
+{
+	<br>
+	<br>
+	<h4>You have no pending orders.</h4>
+}
+else
+{
+	<table class="table table-bordered table-striped" style="height:100%;width:100%;display:block;overflow:scroll">
+		<thead>
+			<tr>
+				<th>Order ID</th>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Order Cost</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var order in Model.OrderList)
+			{
+				<tr>
+					<td width="20%">@order.OrderID</td>
+					<td width="50%">@order.Product</td>
+					<td width="10%">@order.Quantity</td>
+					<td width="20%">@order.Cost<td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+
