@@ -30,7 +30,7 @@ namespace ECommerce.Pages.Purchase
         {
             Products = _db.Products.Find(pid);
             var uid = User.FindFirst("UserID").Value;
-            decimal totalCost = order.BuyQuantity * Products.Price;
+            decimal totalCost = (decimal)order.BuyQuantity * Products.Price;
             int orderID;
             try
             {

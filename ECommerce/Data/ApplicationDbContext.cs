@@ -15,5 +15,6 @@ namespace ECommerce.Data
 		public DbSet<Represents> Represents { get; set; }
 		public DbSet<Shop> Shop { get; set; }
 		public DbSet<User> User { get; set; }
+		public DbSet<Order> Order { get; set; }
 	}
 }
