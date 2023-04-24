@@ -3,13 +3,10 @@
     background-color: #1b6ec2;
     border-color: #1861ac;
     border-radius: 12px;
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    margin: 25px;
+    font-size: 100px;
     height: 150px;
-    width: 400px;
-    text-align: center;
+    display: flex;
+    margin: 25px;
 }
 
 btn:hover {

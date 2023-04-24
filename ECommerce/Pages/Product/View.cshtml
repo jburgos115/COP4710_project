@@ -3,7 +3,6 @@
 @{
     
     var product = Model.Products;
-    var availability = 1;
     ViewData["Title"] = product.Name;
 }
 
@@ -36,24 +35,27 @@
     @if (User.Identity.IsAuthenticated)
     {
         <div id="purchase-container" class="col-auto">
-            <div id="availability">
-                @if (@availability == 1)
-                {
+            @if (@product.Quantity > 0)
+            {
+                <div id="availability">
                     <span class="in-stock">In Stock</span>
-                }
-                else
-                {
-                    <span class="out-of-stock">Out of Stock</span>
-                }
-            </div>
-		    <a class="btn btn-primary" style="width: 100%" asp-area="" asp-route-pid=@product.ProductID asp-page="../Purchase/Purchase">Purchase</a>
+                </div>
+                <a class="btn btn-primary" style="width: 100%" asp-area="" asp-route-pid=@product.ProductID asp-page="../Purchase/Purchase">Purchase</a>
+            }
+            else
+            {
+                <div id="availability">
+                        <span class="out-of-stock">Out of Stock</span>
+                </div>
+                <a class="btn btn-secondary" style="width: 100%" >Product Unavailable</a>
+            }
 	    </div>
     }
     else
     {
             <div id="purchase-container" class="col-auto">
                 <div id="availability">
-                @if (@availability == 1)
+                @if (@product.Quantity > 0)
                 {
                             <span class="in-stock">In Stock</span>
                 }

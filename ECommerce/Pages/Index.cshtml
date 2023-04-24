@@ -19,21 +19,9 @@
 @foreach (var CatObj in Model.Category)
 {
     int count = 0;
-    int tempID = 0;
-    @foreach (var RepsObj1 in Model.Represents)
-    {
-        if(RepsObj1.CategoryID == CatObj.CategoryID)
-        {
-            tempID = RepsObj1.ProductID;
-            break;
-        }
-    }
 
     <a style='text-decoration:none;' asp-area="" asp-route-id=@CatObj.CategoryID asp-page="/CategoriesDisplay/CategoriesDisplay">
-        @{
-            Model.OnGetFetchImg(tempID);
-        }
-        <btn><txt>@CatObj.Name</txt><hr class = "button-divider"><img class = "category-image" src=@ViewData["imgsrc"] alt="Apple" width="200" height="100"></btn>
+            <btn><text>@CatObj.Name</text></btn>
 	</a>
     @foreach (var ProdObj in Model.Products_i)
     {
