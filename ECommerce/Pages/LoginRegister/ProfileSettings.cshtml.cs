@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authentication;
 
 namespace ECommerce.Pages.LoginRegister
 {
+    [Authorize(Policy = "Basic")]
     [BindProperties]
     public class ProfileSettingsModel : PageModel
     {

@@ -25,8 +25,18 @@ builder.Services.AddAuthentication("MyCookieAuth").AddCookie("MyCookieAuth", opt
 });
 
 builder.Services.AddAuthorization(options => {
-    options.AddPolicy("UserCredentials",
+    options.AddPolicy("Basic",
+        policy => policy.RequireAuthenticatedUser());
+});
+
+builder.Services.AddAuthorization(options => {
+    options.AddPolicy("Customer",
         policy => policy.RequireClaim("User", "General"));
+});
+
+builder.Services.AddAuthorization(options => {
+    options.AddPolicy("Seller",
+        policy => policy.RequireClaim("User", "Seller"));
 });
 
 /***********************/

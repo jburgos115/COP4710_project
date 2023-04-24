@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authentication;
 
 namespace ECommerce.Pages.Order
 {
+    [Authorize(Policy = "Basic")]
     public class OrderSummaryModel : PageModel
     {
         public List<OrderInfo> OrderList { get; set; }

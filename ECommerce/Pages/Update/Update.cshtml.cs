@@ -1,5 +1,6 @@
 using ECommerce.Data;
 using ECommerce.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
@@ -8,6 +9,7 @@ using System.Data;
 
 namespace ECommerce.Pages.Update
 {
+	[Authorize(Policy = "Basic")]
 	public class UpdateModel : PageModel
 	{
 		private readonly ApplicationDbContext _db;

@@ -1,6 +1,7 @@
 using ECommerce.Data;
 using ECommerce.Model;
 using ECommerce.Pages.LoginRegister;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
@@ -12,6 +13,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace ECommerce.Pages.ProductAdd
 {
+    [Authorize(Policy = "Basic")]
     public class ProductAddModel : PageModel
     {
 

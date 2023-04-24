@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Principal;
+using Microsoft.AspNetCore.Authorization;
 
 /*
  * This will log the user out of the website deleting their cookie and requiring them to log in again
@@ -10,6 +11,7 @@ using System.Security.Principal;
 
 namespace ECommerce.Pages.LoginRegister
 {
+    [Authorize(Policy = "Basic")]
     public class LogoutModel : PageModel
     {
         public async Task<IActionResult> OnPostAsync()

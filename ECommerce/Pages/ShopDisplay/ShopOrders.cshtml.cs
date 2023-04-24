@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
@@ -5,7 +6,8 @@ using System.Data;
 
 namespace ECommerce.Pages.ShopDisplay
 {
-    public class ShopOrdersModel : PageModel
+	[Authorize(Policy = "Basic")]
+	public class ShopOrdersModel : PageModel
     {
 		public List<OrderInfo> OrderList { get; set; }
 		private readonly IConfiguration _configuration;

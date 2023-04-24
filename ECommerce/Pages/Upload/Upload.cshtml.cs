@@ -1,5 +1,6 @@
 using ECommerce.Data;
 using ECommerce.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Cryptography;
@@ -7,6 +8,7 @@ using System.Text;
 
 namespace ECommerce.Pages.Upload
 {
+    [Authorize(Policy = "Basic")]
     public class UploadModel : PageModel
     {
         public Model.Products Products { get; set; }

@@ -1,5 +1,6 @@
 using ECommerce.Data;
 using ECommerce.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
@@ -8,7 +9,8 @@ using System.Security.Cryptography;
 
 namespace ECommerce.Pages.ShopDisplay
 {
-    public class updateModel : PageModel
+	[Authorize(Policy = "Basic")]
+	public class updateModel : PageModel
     {
 		private readonly ApplicationDbContext _db;
 		private readonly IConfiguration _configuration;
