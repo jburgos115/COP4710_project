@@ -3,13 +3,12 @@
     background-color: #1b6ec2;
     border-color: #1861ac;
     border-radius: 12px;
-    font-size: 25px;
+    font-size: 75px;
     text-decoration: none;
     display: flex;
     align-items: center;
     margin: 25px;
     height: 150px;
-    width: 400px;
 }
 
 btn:hover{
@@ -19,16 +18,16 @@ btn:hover{
 img {
     float: right;
     display: inline;
-    margin-left: auto;
+    margin-right: 20%;
 }
 
 txt {
-    margin-left: 10%;
+    margin-left: 15%;
 }
 
 hr {
     color: black;
     width: 5px;
     height: 100px;
-    margin-left: 14%;
+    margin: auto;
 }

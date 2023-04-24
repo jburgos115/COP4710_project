@@ -1,15 +1,20 @@
-﻿btn {
+﻿a {
+    text-align: center;
+}
+
+text {
+    margin: auto;
+}
+
+btn {
     color: #ffffff;
     background-color: #1b6ec2;
     border-color: #1861ac;
     border-radius: 12px;
-    font-size: 25px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    margin: 25px;
+    font-size: 100px;
     height: 150px;
-    width: 400px;
+    display: flex;
+    margin: 25px;
 }
 
 btn:hover {
@@ -22,10 +27,6 @@ btn:hover {
     margin-left: auto;
 }
 
-txt {
-    margin-left: 10%;
-}
-
 .button-divider {
     color: black;
     width: 5px;
@@ -35,10 +36,6 @@ txt {
 
 h1{
     text-align: center;
-}
-
-h2{
-    text-align: left;
 }
 
 .product-image {

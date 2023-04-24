@@ -58,33 +58,18 @@ namespace ECommerce.Pages.Purchase
 
                     cmd.Dispose();
                     connection.Close();
-
-                    TempData["success"] = "Order processed successfully";
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["error"] = "Sorry, we are unable to process your request at this time. Please try again later.";
-            }
-
-            int newQuantity = Products.Quantity - order.BuyQuantity;
-
-            try
-            {
-                string connectionString = _configuration["ConnectionStrings:DefaultConnection"];
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
                     connection.Open();
-                    //Update Quantity details in Products table
-                    String myCommand = "UPDATE [Products] SET Quantity = @Quantity WHERE ProductID = @ProductID";
 
-                    SqlCommand cmd = new SqlCommand(myCommand, connection);
-                    cmd = new SqlCommand(myCommand, connection);
+                    int newQuantity = Products.Quantity - order.BuyQuantity;
+                    String myCommand2 = "UPDATE [Products] SET Quantity = @Quantity WHERE ProductID = @ProductID";
 
-                    cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = newQuantity;
-                    cmd.Parameters.Add("@ProductID", SqlDbType.Int).Value = Products.ProductID;
+                    SqlCommand cmd2 = new SqlCommand(myCommand2, connection);
+                    cmd2 = new SqlCommand(myCommand2, connection);
 
-                    int success = Convert.ToInt32(cmd.ExecuteNonQuery());
+                    cmd2.Parameters.Add("@Quantity", SqlDbType.Int).Value = newQuantity;
+                    cmd2.Parameters.Add("@ProductID", SqlDbType.Int).Value = Products.ProductID;
+
+                    int success = Convert.ToInt32(cmd2.ExecuteNonQuery());
 
                     //Check if query was unsuccessful
                     if (success < 1)
@@ -92,7 +77,7 @@ namespace ECommerce.Pages.Purchase
                         TempData["error"] = "There was an error updating product quantity";
                     }
 
-                    cmd.Dispose();
+                    cmd2.Dispose();
                     connection.Close();
 
                     TempData["success"] = "Order processed successfully";
