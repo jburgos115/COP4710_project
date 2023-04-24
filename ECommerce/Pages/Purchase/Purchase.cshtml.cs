@@ -48,12 +48,12 @@ namespace ECommerce.Pages.Purchase
                     cmd.Parameters.Add("@BuyQuantity", SqlDbType.Int).Value = order.BuyQuantity;
                     cmd.Parameters.Add("@Street", SqlDbType.NVarChar, 100).Value = order.Street;
                     cmd.Parameters.Add("@City", SqlDbType.NVarChar, 100).Value = order.City;
-                    cmd.Parameters.Add("@State", SqlDbType.NVarChar, 2).Value = order.State;
+                    cmd.Parameters.Add("@State", SqlDbType.NChar, 2).Value = order.State;
                     cmd.Parameters.Add("@Zip", SqlDbType.NChar, 5).Value = order.Zip;
-                    cmd.Parameters.Add("@CardNum", SqlDbType.NVarChar, 16).Value = order.CardNum;
+                    cmd.Parameters.Add("@CardNum", SqlDbType.NChar, 16).Value = order.CardNum;
                     cmd.Parameters.Add("@CardExpMonth", SqlDbType.Int).Value = order.CardExpMonth;
                     cmd.Parameters.Add("@CardExpYear", SqlDbType.Int).Value = order.CardExpYear;
-                    cmd.Parameters.Add("@NameOnCard", SqlDbType.NVarChar, 100).Value = order.NameOnCard;
+                    cmd.Parameters.Add("@NameOnCard", SqlDbType.VarChar, 100).Value = order.NameOnCard;
                     orderID = (int)cmd.ExecuteScalar();
 
                     cmd.Dispose();
