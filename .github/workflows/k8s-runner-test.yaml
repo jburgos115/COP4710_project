@@ -1,0 +1,56 @@
+name: Linux Runner Stress Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      runner_label:
+        description: "Type of runner to execute tasking"
+        default: "linux-runner"
+      duration_minutes:
+        description: "Stress test duration per job"
+        default: "5"
+      memory_gb:
+        description: "GiB to allocate per job"
+        default: "7"
+      cpu_burn:
+        description: "Enable CPU burn? (true/false)"
+        default: "false"
+      thread_count:
+        description: "Number of working threads per CPU burn job (defaults to cgroup CPU count)"
+        default: ""
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  stress:
+    name: stress-test-${{ matrix.idx }}
+    runs-on: ${{ inputs.runner_label }}
+    container:
+      image: artifactory.caemilusa.com/oci-prod/dockerrhel/rhel9:latest
+    timeout-minutes: 90
+
+    strategy:
+      fail-fast: false
+      matrix:
+        idx: [1,2,3,4,5,6,7,8,9,10] # ,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
+    steps:
+      - name: Checkout repo (for scripts)
+        uses: actions/checkout@v4
+
+      - name: Runner & cgroup info
+        run: bash scripts/cgroup_info.sh
+
+      # - name: CPU burn
+      #   if: ${{ inputs.cpu_burn == 'true' }}
+      #   env:
+      #     DURATION: "${{ inputs.duration_minutes }}"
+      #     THREADS: "${{ inputs.thread_count }}"
+      #   run: sudo scripts/cpuburn.sh
+
+      # - name: Memory hold
+      #   env:
+      #     MEM_GB:    "${{ inputs.memory_gb }}"
+      #     DURATION:  "${{ inputs.duration_minutes }}"
+      #   run: python3 scripts/memhog.py
